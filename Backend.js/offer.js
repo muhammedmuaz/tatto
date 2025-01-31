@@ -3,72 +3,152 @@
 
 
 
-const express = require('express');
-const { MongoClient, ObjectId } = require('mongodb');
-const cors = require('cors');
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+// const express = require('express');
+// const { MongoClient, ObjectId } = require('mongodb');
+// const cors = require('cors');
+// const multer = require('multer');
+// const path = require('path');
+// const fs = require('fs');
+
+// const app = express();
+// const port = 3006;
+
+// // MongoDB connection details
+// const uri = "mongodb+srv://kiranchaudharycg:IW0hS0AUPz9Ojy4w@cluster0.dglen.mongodb.net/";
+// const dbName = "offer";
+
+// // Middleware
+// app.use(express.json());
+// app.use(cors());
+
+// // Configure multer for file uploads
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'uploads'); // Save files to the 'uploads' folder
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, `${Date.now()}-${file.originalname}`); // Unique filename
+//     }
+// });
+
+// const upload = multer({ storage });
+
+// // Create 'uploads' directory if it doesn't exist
+// if (!fs.existsSync('./uploads')) {
+//     fs.mkdirSync('./uploads');
+// }
+
+// let db, offer;
+
+// // Connect to MongoDB and initialize collections
+// async function initializeDatabase() {
+//     try {
+//         const client = await MongoClient.connect(uri, { useUnifiedTopology: true });
+//         console.log("Connected to MongoDB");
+
+//         db = client.db(dbName);
+//         offer = db.collection("offer");
+
+//         // Start server after successful DB connection
+//         app.listen(port, () => {
+//             console.log(`Server running at http://localhost:${port}`);
+//         });
+//     } catch (err) {
+//         console.error("Error connecting to MongoDB:", err);
+//         process.exit(1); // Exit if database connection fails
+//     }
+// }
+
+// // Initialize Database
+// initializeDatabase();
+
+// // Serve uploaded images statically
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// // Routes
+
+// // GET: List all offers
+// app.get('/offer', async (req, res) => {
+//     try {
+//         const allOffers = await offer.find().toArray();
+//         res.status(200).json(allOffers);
+//     } catch (err) {
+//         res.status(500).send("Error fetching offers: " + err.message);
+//     }
+// });
+
+
+const express = require("express");
+const { MongoClient, ObjectId } = require("mongodb");
+const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+require("dotenv").config(); // Load environment variables
 
 const app = express();
-const port = 3006;
+const port = process.env.PORT || 3006;
 
-// MongoDB connection details
-const uri = "mongodb+srv://kiranchaudharycg:IW0hS0AUPz9Ojy4w@cluster0.dglen.mongodb.net/";
+// ✅ Use environment variables for security
+const uri = process.env.MONGO_URI || "mongodb+srv://kiranchaudharycg:IW0hS0AUPz9Ojy4w@cluster0.dglen.mongodb.net/?retryWrites=true&w=majority&tls=true";
 const dbName = "offer";
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
-// Configure multer for file uploads
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads'); // Save files to the 'uploads' folder
-    },
-    filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); // Unique filename
-    }
-});
-
-const upload = multer({ storage });
-
-// Create 'uploads' directory if it doesn't exist
-if (!fs.existsSync('./uploads')) {
-    fs.mkdirSync('./uploads');
+// ✅ Ensure 'uploads' directory exists
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-let db, offer;
+// ✅ Configure multer for file uploads
+const storage = multer.diskStorage({
+    destination: uploadDir, // Save files to the 'uploads' folder
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}-${file.originalname}`);
+    }
+});
+const upload = multer({ storage });
 
-// Connect to MongoDB and initialize collections
+// ✅ Serve uploaded images statically
+app.use("/uploads", express.static(uploadDir));
+
+// ✅ MongoDB Connection Function
+let db, offer;
 async function initializeDatabase() {
     try {
-        const client = await MongoClient.connect(uri, { useUnifiedTopology: true });
-        console.log("Connected to MongoDB");
+        const client = new MongoClient(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true, // Deprecated but still works
+            tls: true, // Ensure TLS is enabled
+            serverSelectionTimeoutMS: 5000, // Timeout after 5s
+        });
+
+        await client.connect();
+        console.log("✅ Connected to MongoDB");
 
         db = client.db(dbName);
         offer = db.collection("offer");
 
-        // Start server after successful DB connection
+        // ✅ Start server after DB connection
         app.listen(port, () => {
-            console.log(`Server running at http://localhost:${port}`);
+            console.log(`🚀 Server running at http://localhost:${port}`);
         });
     } catch (err) {
-        console.error("Error connecting to MongoDB:", err);
-        process.exit(1); // Exit if database connection fails
+        console.error("❌ Error connecting to MongoDB:", err);
+        process.exit(1); // Exit if DB connection fails
     }
 }
 
-// Initialize Database
+// ✅ Initialize Database
 initializeDatabase();
 
-// Serve uploaded images statically
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// ✅ API Routes
 
-// Routes
-
-// GET: List all offers
-app.get('/offer', async (req, res) => {
+// 🟢 GET: List all offers
+app.get("/offer", async (req, res) => {
     try {
         const allOffers = await offer.find().toArray();
         res.status(200).json(allOffers);
@@ -77,5 +157,20 @@ app.get('/offer', async (req, res) => {
     }
 });
 
+// 🟢 POST: Upload an offer with an image
+app.post("/offer", upload.single("image"), async (req, res) => {
+    try {
+        const newOffer = {
+            name: req.body.name,
+            price: req.body.price,
+            imageUrl: req.file ? `/uploads/${req.file.filename}` : null,
+        };
+
+        const result = await offer.insertOne(newOffer);
+        res.status(201).json(result);
+    } catch (err) {
+        res.status(500).send("Error saving offer: " + err.message);
+    }
+});
 
 
