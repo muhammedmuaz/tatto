@@ -1,42 +1,56 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* App.css or Navbar.css */
+
+/* Reset some default styles */
+body, ul, li, a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Navbar container */
+nav {
+  background-color:white; /* Dark background */
+  padding: 1rem 2rem; /* Add some padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: -50vh; /* Add a subtle shadow */
+  font-size: 120%;
+  width: 131%;
+  
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Navbar list */
+nav ul {
+  display: flex; /* Make the list items horizontal */
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  font-weight: 800;
+  font-size: 20%;
+  gap: 3.5rem; /* Space between items */
+  padding-left:28vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Navbar list items */
+nav ul li {
+  padding: 0.5rem 0; /* Add some padding */
 }
 
-.card {
-  padding: 2em;
+/* Navbar links */
+nav ul li a {
+  color:black; /* White text */
+  font-size: 1rem; /* Font size */
+  font-weight: 500; /* Medium font weight */
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
-.read-the-docs {
-  color: #888;
+/* Hover effect on links */
+nav ul li a:hover {
+  color: #ff6347; /* Change color on hover (e.g., tomato) */
+}
+
+/* Active link style (optional) */
+nav ul li a.active {
+  color: #ff6347; /* Highlight active link */
+  border-bottom: 2px solid #ff6347; /* Add an underline */
 }

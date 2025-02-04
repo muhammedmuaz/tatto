@@ -1,166 +1,46 @@
-/* 
 .form-container {
-    background: black;
-    color: white;
+    background-color: #000;
+    color: #fff;
     padding: 20px;
     border-radius: 10px;
-    max-width: 1100px;
-    margin: auto;
-    font-family: "Arial", sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
- 
-  h2 {
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
-
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-  }
- 
-  input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: gray;
-    border: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: white;
-    color: black;
-  }
-  
-
-  .users-list {
-    margin-top: 20px;
-    background: white;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .users-list h3 {
-    text-align: center;
-  }
-  
-  .users-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .users-list li {
-    padding: 5px;
-    border-bottom: 1px solid gray;
-  }
-   */
-
-   /* Form Container */
-.form-container {
-    background: black;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 40vw;  /* Full width of viewport */
-    height: 90vh; /* Full height of viewport */
+  form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: "Arial", sans-serif;
-}
-
-/* Centering the form */
-form {
-    width: 50%; /* Adjust width as needed */
-    max-width: 600px; /* Prevents it from getting too wide */
-}
-
-/* Heading */
-h1 {
-    text-align: center;
-    margin-bottom: 89vh;
-    font-size: 300%;
-    position: fixed;
-}
-
-/* Labels */
-label {
-    display: block;
-    margin: 10px 0 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
     font-weight: bold;
-    font-size: 150%;
-}
-
-/* Inputs and Select Dropdown */
-input, select {
+  }
+  
+  .form-group input,
+  .form-group select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 60px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-}
-
-/* Submit Button */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: gray;
+    margin-top: 5px;
+  }
+  
+  .submit-button {
+    background-color: #333;
+    color: #fff;
     border: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-}
-.email{
-  margin-bottom: 10px;
-}
-button:hover {
-    background-color: white;
-    color: black;
-}
-
-/* Users List */
-.users-list {
     margin-top: 20px;
-    background: white;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-    width: 80%; /* Adjust width as needed */
-    max-width: 800px;
-}
-
-.users-list h3 {
-    text-align: center;
-}
-
-.users-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.users-list li {
-    padding: 10px;
-    border-bottom: 1px solid gray;
-}
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #555;
+  }
