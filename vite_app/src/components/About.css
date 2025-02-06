@@ -1,0 +1,240 @@
+
+
+.workspace{
+    background-color: black;
+    width: 99.7vw;
+    height: 135vh;
+    margin-top: -40vh;
+    margin-left: 0px;
+    position:absolute;
+    
+}
+.text{
+    color:white;
+    padding-left: 39vw;
+    font-size: 280%;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 600;
+    padding-top: -8vh;
+    letter-spacing:1.5px;
+}
+.studio{
+    width: 80vw;
+    padding-left: 9.3vw;
+    padding-top: 2vh;
+    
+}
+.text2{
+    color:black;
+    font-size: 35px;
+    font-family:Bebas Neue, sans-serif;
+    font-weight: 600;
+    padding-left: 10vw;
+    padding-top: 115vh;
+    letter-spacing: px;
+    position: absolute;
+}
+.text3{
+    color:rgb(54, 51, 51);
+    font-size: 18px;
+    font-family: Bebas Neue, sans-serif;
+    font-weight: 600;
+    padding-left: 10vw;
+    padding-top: 128vh;
+    letter-spacing: px;
+    width: 41vw;
+    position: absolute;
+}
+.text4{
+    color:rgb(54,51,51);
+    font-size: 18px;
+    font-family: Bebas Neue, sans-serif;
+    font-weight: 600;
+    padding-left: 10vw;
+    padding-top: 145vh;
+    letter-spacing: px;
+    width: 41vw;
+    position: absolute;
+}
+.text5{
+    color:rgb(54,51,51);
+    font-size: 18px;
+    font-family: Bebas Neue, sans-serif;
+    font-weight: 600;
+    padding-left: 10vw;
+    padding-top: 162vh;
+    letter-spacing: px;
+    width: 41vw;
+    position: absolute;
+}
+/* .twoimg{
+    width: 27vw;
+    padding-left: 62vw;
+    padding-top: 158vh;
+    height: 77vh;
+    border-radius: 15px 15px 15px 15px;
+    position: absolute;
+} */
+.container {
+    position: absolute;
+    padding-top:110vh;
+    margin-left: 64vw;
+    width: 405px;
+    
+    
+}
+.image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.image-wrapper img {
+    width: 100%;
+    display:block;
+}
+.overlay-image {
+    position: absolute;
+    bottom: -40px;
+    left: 35%;
+    transform: translateX(-50%);
+    width: 105%;height: 32vh;
+
+    border-radius: 8px;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); */
+    border: 14px solid white;
+}
+.vision-mission{
+    background-color: black;
+    width: 99.7vw;
+    height: 80vh;
+    position: absolute;
+    margin-top: 200vh;
+}
+.vision{
+    color:white;
+    font-size: 40px;
+    font-family: Bebas Neue, sans-serif;
+    font-weight: 600;
+    padding-left: 10vw;
+    padding-top: 5vh;
+}
+.vision-1{
+    color:white;
+    font-size: 20px;
+    font-family: Bebas Neue, sans-serif;
+    padding-left: 10vw;
+    width: 80vw;
+    font-weight: 600;
+}
+.mission{
+    color:white;
+    font-size: 40px;
+    font-family: Bebas Neue, sans-serif;
+    font-weight: 600;
+    padding-left: 10vw;
+    padding-top: 4vh;
+}
+.mission-1{
+    color:white;
+    font-size: 20px;
+    font-family: Bebas Neue, sans-serif;
+    padding-left: 10vw;
+    width: 80vw;
+    font-weight: 600;
+}
+.team{
+  color: white;
+  padding-left: 40vw;
+  padding-top: 10vh;
+}
+.team1{
+    background-color: black;
+    width: 26vw;
+    height: 65vh;
+    position: absolute;
+    margin-top: 290vh;
+    margin-left: 18vw;
+    border-radius: 10px;
+}
+.parth{
+    width: 25.3vw;
+    height: 50vh;
+    padding-left: .4vw;
+    padding-top: .7vh;
+    border-radius: 10px;
+}
+.parth1{
+    color:white;
+padding-left: 7vw;
+}
+.eric{
+    color:white;
+padding-left: 9vw;
+}
+.poufa{
+    color:white;
+padding-left: 10vw;
+}
+.sammy{
+    color:white;
+padding-left: 10vw;
+}
+
+.parth2{
+    color:white;
+    padding-left: 10vw;
+    margin-top: -3vh;
+}
+.team2{
+    background-color: black;
+    width: 26vw;
+    height: 65vh;
+    position: absolute;
+    margin-top: 290vh;
+    margin-left: 54vw;
+    border-radius: 10px;
+}
+.team3{
+    background-color: black;
+    width: 26vw;
+    height: 65vh;
+    position: absolute;
+    margin-top: 365vh;
+    margin-left: 18vw;
+    border-radius: 10px;
+}
+.team4{
+    background-color: black;
+    width: 26vw;
+    height: 65vh;
+    position: absolute;
+    margin-top: 365vh;
+    margin-left: 54vw;
+    border-radius: 10px;
+}
+.about-button{
+    background-color: white;
+    position: absolute;
+    margin-top: 438vh;
+    margin-left: 40vw;
+    width: 22vw;
+    height: 3.5vw;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.button-1{
+    color: black;
+    font-size: 25px;
+    font-family: Bebas Neue, sans-serif;
+    font-weight: 600;
+    padding-left: 1vw;
+   margin-top: 1.5vh;
+    
+}
+.about-footer{
+    background-color: black;
+    width: 99vw;
+    height: 170vh;
+    margin-top: 455vh;
+    position: absolute;
+  }

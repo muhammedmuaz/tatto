@@ -1,0 +1,65 @@
+/* App.css or Navbar.css */
+
+/* Reset some default styles */
+/* Reset default styles */
+body, ul, li, a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+.logo{
+  width: 5vw;
+  margin-left: -26vw;
+}
+
+/* Navbar container */
+nav {
+  background-color: white; /* Dark background */
+  padding: rem 2rem; /* Add some padding */
+  box-shadow: 0 2px 4px rgba(249, 248, 248, 0.1);
+  font-size: 120%;
+  width: 100%; /* Full width */
+  position: fixed; /* Fixed position */
+  top: 0; /* At the top */
+  z-index: 1000; 
+  padding-left: 34vw;/* High z-index to ensure it stays on top */
+}
+
+/* Navbar list */
+nav ul {
+  display: flex; /* Make the list items horizontal */
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  font-weight: 800;
+  font-size: 20%;
+  gap: 4rem; /* Space between items */
+  padding-left: 2rem; /* Adjust padding to fit the design */
+}
+.home{
+  padding-left: 15vw;
+}
+
+/* Navbar list items */
+nav ul li {
+  padding: 0.5rem 0; /* Add some padding */
+}
+
+/* Navbar links */
+nav ul li a {
+  color: black; /* White text */
+  font-size: 1.1rem; /* Font size */
+  font-weight: 550; /* Medium font weight */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect on links */
+nav ul li a:hover {
+  color: #90807d; /* Change color on hover (e.g., tomato) */
+}
+
+/* Active link style (optional) */
+nav ul li a.active {
+  color: #90807d; /* Highlight active link */
+  border-bottom: 2px solid #90807d; /* Add an underline */
+}
