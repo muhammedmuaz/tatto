@@ -6,47 +6,60 @@ import "./contact.css"; // Make sure this file contains the CSS styles
 
 const Contact = () => {
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    design: '',
-    appointment: ''
-  });
+ const [formData, setFormData] = useState({
+  name: '',
+  email: '',
+  mobile: '',
+  design: '',
+  appointment: ''
+});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setFormData(prevState => ({
+    ...prevState,
+    [name]: value
+  }));
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch('http://localhost:3000/users', {
+const handleSubmit = async (e) => {
+  e.preventDefault(); // ✅ Prevents page refresh
+
+  if (!formData.name || !formData.email || !formData.mobile) {
+    console.log("Please fill in all required fields.");
+    return;
+  }
+
+  try {
+    const response = await fetch('https://tattoos-website-6.onrender.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Success:', data);
-      alert('Form submitted successfully!');
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert('Failed to submit form. Please check the console for more details.');
     });
-  };
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Error ${response.status}: ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log('Form submitted successfully:', data);
+
+    // ✅ Reset the form fields after successful submission
+    setFormData({
+      name: '',
+      email: '',
+      mobile: '',
+      design: '',
+      appointment: ''
+    });
+
+  } catch (error) {
+    console.error('Form submission error:', error.message);
+  }
+};
   return (
     <div>
     <div>
@@ -178,3 +191,6 @@ const Contact = () => {
 }
 
 export default Contact;
+
+
+
