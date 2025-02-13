@@ -1,46 +1,57 @@
-.form-container {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  form {
+/* .Home-video{
+    background-color: black;
+    width: 100vw;
+    height: 120vh;
+    margin-top: -32vh;
+} */
+video{
+    margin-top: 10vh;
+    height: 81vh;
+    width:99vw;
+    position: relative;
+    overflow: hidden;
+    /* height: 78vh; */
+}
+
+.banner-img{
+    width: 99.2vw;
+    height: 20vh;
+    margin-top: -.7vh;
+    margin-left: -.2vw;
+    
+}.offer{
+    color:white;
+    margin-top: -17vh;
+    margin-left: 35vw;
+    font-family: Beabs Neue, sans-serif;
+    font-size: 28px;
+}
+
+.image-container {
     display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-  
-  .submit-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-  }
-  
-  .submit-button:hover {
-    background-color: #555;
-  }
+    flex-wrap: wrap;
+    justify-content: center; /* Center the images */
+    gap: 20px; /* Adjust spacing between images */
+    padding: 15px;
+}
+
+.image {
+    width: 45%; /* Ensures two images per row */
+    max-width: 300px; /* Set a max width for responsiveness */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect */
+.image:hover {
+    transform: scale(1.05);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .image {
+        width: 90%; /* Full width on smaller screens */
+    }
+}

@@ -184,8 +184,10 @@ const handleSubmit = async (e) => {
         <div className="circle-5">
          <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png"/>
         </div>
-        
+        <div className="row"></div>
     </div>
+
+   
     </div>
   );
 }

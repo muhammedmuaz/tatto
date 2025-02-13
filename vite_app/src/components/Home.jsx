@@ -1,82 +1,63 @@
-import React, { useState } from 'react';
-import './Home.css'; // Import the CSS file
+import React, { useEffect, useState } from "react";
+import "./Home.css";
 
-function Home() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: ''
-  });
+const Home = () => {
+  const [images, setImages] = useState([]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch("https://tattoos-website-7.onrender.com/offer");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched data:", data); // Debugging
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch('http://localhost:3000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        setImages(Array.isArray(data) ? data : data.image || []);
+      } catch (error) {
+        console.error("Error fetching images:", error);
       }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Success:', data);
-      alert('Form submitted successfully!');
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      alert('Failed to submit form. Please check the console for more details.');
-    });
-  };
+    };
+
+    fetchImages();
+  }, []);
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Your Name (Required)</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+    <div>
+      <div className="Home-container"></div>
+      <div className="Home-video">
+        <video className="video" src="https://alphatattooindia.com//wp-content//uploads//2024//05//main_video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          // width="90%"
+          // height="120vh"
+          style={{ objectFit: "cover"}}
+        />
+
+       </div>
+<div className="banner">
+      <img className="banner-img" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738903818/tringle-3_utewtd.png"/>
+      <h2 className="offer">CHECK OUT OUR LATEST OFFER</h2>
+    </div>
+   
+      <div>
+      
+        <div style={{ display: "flex", flexWrap: "wrap" }} className="image-container">
+          {images.length > 0 ? (
+            images.map((image, index) => (
+              <img className="image" key={index} src={image.imageurl} alt={`Image ${index}`} width="200" />
+            ))
+          ) : (
+            <p>No images available</p>
+          )}
         </div>
-        <div className="form-group">
-          <label>Your Email (Required)</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label>Your Mobile (Required)</label>
-          <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label>Do You Have a Design in Mind?</label>
-          <select name="design" onChange={handleChange}>
-            <option value="">Please Choose an Option</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label>When Would You Like to Get This Tattoo?</label>
-          <select name="appointment" onChange={handleChange}>
-            <option value="">Please Choose an Option</option>
-            <option value="asap">As soon as possible</option>
-            <option value="weekend">This weekend</option>
-            <option value="specific-date">Specific date</option>
-          </select>
-        </div>
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
+      </div>
+
     </div>
   );
-}
+};
 
 export default Home;
