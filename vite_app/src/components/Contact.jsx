@@ -21,9 +21,8 @@ const handleChange = (e) => {
     [name]: value
   }));
 };
-
 const handleSubmit = async (e) => {
-  e.preventDefault(); // ✅ Prevents page refresh
+  e.preventDefault(); // ✅ Prevent page refresh
 
   if (!formData.name || !formData.email || !formData.mobile) {
     console.log("Please fill in all required fields.");

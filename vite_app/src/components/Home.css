@@ -28,19 +28,35 @@ video{
 }
 
 .image-container {
+    /* display: flex; */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; 
+    padding: 15px;
+}
+.image-row{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the images */
-    gap: 20px; /* Adjust spacing between images */
-    padding: 15px;
+    gap: 155px;
+    padding: 10px;
+    margin-left: 18.7vw;
+    margin-top: -3vh;
+}
+.image-row1{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 155px;
+    padding: 10px;
+    margin-top: 12vh;
+    margin-left: 18.7vw;
 }
 
 .image {
     width: 45%; /* Ensures two images per row */
-    max-width: 300px; /* Set a max width for responsiveness */
+    max-width: 360px; /* Set a max width for responsiveness */
     border-radius: 10px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.5);
 }
 
 /* Hover effect */
@@ -54,4 +70,80 @@ video{
     .image {
         width: 90%; /* Full width on smaller screens */
     }
+}
+
+
+.offer-box{
+    width: 17vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:-62.5vh;
+    margin-left: 23.2vw;
+    border-radius: 3px ;
+
+}
+.offer-text{
+    color:black;
+   margin-top: 4.7px;
+    margin-left: 15px;
+    font-weight: 600;
+    font-family:Bebas Neue, sans-serif ;
+    font-size: 120%;
+}
+
+.offer-box1{
+    width: 17vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:-5.4vh;
+    margin-left: 56.7vw;
+    border-radius: 3px ;
+
+}
+.offer-box3{
+    width: 17vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:59vh;
+    margin-left: 23.2vw;
+    border-radius: 3px ;
+
+}
+.offer-box4{
+    width: 17vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:-5.2vh;
+    margin-left: 56.7vw;
+    border-radius: 3px ;
+
+}
+.heart{
+    background-color: black;
+    width: 98.9vw;
+    height: 45vh;
+    margin-top: vh;
+}
+.heart-text{
+    color:white;
+    font-size: 280%;
+    margin-left: 11vw;
+    padding-top: 2.5vh;
+}
+.heart-text1{
+    color:white;
+    font-size: 280%;
+    margin-left: 11vw;
+   margin-top: -6.2vh;
+}
+.heart-text3{
+    color:white;
+    font-size: 120%;
+    margin-left: 11vw;
+   margin-top: -6.2vh;
+   width: 37vw;
 }
