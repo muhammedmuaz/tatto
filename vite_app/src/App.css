@@ -1,7 +1,4 @@
-/* App.css or Navbar.css */
 
-/* Reset some default styles */
-/* Reset default styles */
 body, ul, li, a {
   margin: 0;
   padding: 0;
@@ -13,53 +10,70 @@ body, ul, li, a {
   margin-left: -26vw;
 }
 
-/* Navbar container */
+
 nav {
-  background-color: white; /* Dark background */
-  padding: rem 2rem; /* Add some padding */
+  background-color: white; 
+  padding: rem 2rem;
   box-shadow: 0 2px 4px rgba(249, 248, 248, 0.1);
   font-size: 120%;
-  width: 100%; /* Full width */
-  position: fixed; /* Fixed position */
-  top: 0; /* At the top */
+  width: 100%;
+  position: fixed; 
+  top: 0; 
   z-index: 1000; 
-  padding-left: 34vw;/* High z-index to ensure it stays on top */
+  padding-left: 34vw;
 }
 
-/* Navbar list */
 nav ul {
-  display: flex; /* Make the list items horizontal */
-  justify-content: flex-start; /* Align items to the left */
+  display: flex; 
+  justify-content: flex-start; 
   align-items: center;
   font-weight: 800;
   font-size: 20%;
-  gap: 4rem; /* Space between items */
-  padding-left: 2rem; /* Adjust padding to fit the design */
+  gap: 4rem; 
+  padding-left: 2rem; 
 }
 .home{
   padding-left: 15vw;
 }
 
-/* Navbar list items */
+
 nav ul li {
-  padding: 0.5rem 0; /* Add some padding */
+  padding: 0.5rem 0; 
 }
 
-/* Navbar links */
+
 nav ul li a {
-  color: black; /* White text */
-  font-size: 1.1rem; /* Font size */
-  font-weight: 550; /* Medium font weight */
-  transition: color 0.3s ease; /* Smooth color transition */
+  color: black; 
+  font-size: 1.1rem; 
+  font-weight: 550; 
+  transition: color 0.3s ease;
+  display: block;
 }
 
-/* Hover effect on links */
 nav ul li a:hover {
-  color: #90807d; /* Change color on hover (e.g., tomato) */
+  color: #90807d;
+  
+  transform: scaleY(1.2);
+  transform: scaleX(1.2);
 }
 
-/* Active link style (optional) */
+
 nav ul li a.active {
-  color: #90807d; /* Highlight active link */
-  border-bottom: 2px solid #90807d; /* Add an underline */
+  color: #90807d; 
+  border-bottom: 2px solid #90807d;
+ font-size: 1.5rem;
+ transform: scaleY(1.3);
+ transform: scaleX(1.3);
+ 
+}
+
+
+nav ul li a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  
+  width: 100%;
+  height: 2px;
+  background-color: #90807d;
 }

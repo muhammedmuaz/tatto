@@ -74,14 +74,14 @@ video{
 
 
 .offer-box{
-    width: 17vw;
+    width: 16.4vw;
     height: 5vh;
     /* background-color: black; */
     border: 1.5px solid black;
     margin-top:-62.5vh;
-    margin-left: 23.2vw;
+    margin-left: 23.4vw;
     border-radius: 3px ;
-
+    display: flex;
 }
 .offer-text{
     color:black;
@@ -92,35 +92,53 @@ video{
     font-size: 120%;
 }
 
+
 .offer-box1{
-    width: 17vw;
+    width: 16.4vw;
     height: 5vh;
     /* background-color: black; */
     border: 1.5px solid black;
     margin-top:-5.4vh;
-    margin-left: 56.7vw;
+    margin-left: 57.4vw;
     border-radius: 3px ;
-
+    display: flex;
 }
 .offer-box3{
-    width: 17vw;
+    width: 16.4vw;
     height: 5vh;
     /* background-color: black; */
     border: 1.5px solid black;
     margin-top:59vh;
-    margin-left: 23.2vw;
+    margin-left: 23.4vw;
     border-radius: 3px ;
-
+    display: flex;
 }
 .offer-box4{
-    width: 17vw;
+    width: 16.4vw;
     height: 5vh;
     /* background-color: black; */
     border: 1.5px solid black;
     margin-top:-5.2vh;
-    margin-left: 56.7vw;
+    margin-left: 57.4vw;
     border-radius: 3px ;
+    display: flex;
+}
 
+.icon{
+    margin-top: 1.5vh;
+    margin-left: 1vw;
+}
+.icon1{
+    padding-top: 3.5vh;
+    margin-left: 1vw;
+}
+.icon3{
+    padding-top: 1.5vh;
+    margin-left: 1vw;
+}
+.icon4{
+    padding-top: 1.5vh;
+    margin-left: 1vw;
 }
 .heart{
     background-color: black;
@@ -134,6 +152,7 @@ video{
     margin-left: 11vw;
     padding-top: 2.5vh;
 }
+
 .heart-text1{
     color:white;
     font-size: 280%;
@@ -146,4 +165,11 @@ video{
     margin-left: 11vw;
    margin-top: -6.2vh;
    width: 37vw;
+}
+
+.tattoo-artist-home{
+    background-color: black;
+    width: 99vw;
+    height:15vh ;
+    margin-top: 4vh;
 }
