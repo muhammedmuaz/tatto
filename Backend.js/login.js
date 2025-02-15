@@ -84,21 +84,25 @@ app.post('/users', async (req, res) => {
     try {
         console.log("📥 Incoming Request Body:", req.body);
 
-        const { name, email, mobile } = req.body;
+        const { name, email, mobile, designPreference, appointmentDate } = req.body;
 
-        if (!req.body || Object.keys(req.body).length === 0) {
-            return res.status(400).json({ error: "Request body is missing" });
-        }
-
+        // Check if required fields are provided
         if (!name || !email || !mobile) {
-            return res.status(400).json({ error: "All fields (name, email, mobile) are required" });
+            return res.status(400).json({ error: "Fields 'name', 'email', and 'mobile' are required" });
         }
+
+        // Check if at least two additional fields are provided
+        const additionalFields = [designPreference, appointmentDate].filter(field => field !== undefined);
+        if (additionalFields.length < 1) {  // Changed from 2 to 1
+            return res.status(400).json({ error: "At least one additional field (designPreference or appointmentDate) is required" });
+        }
+        
 
         if (!usersCollection) {
             return res.status(500).json({ error: "Database not initialized yet" });
         }
 
-        const newUser = { name, email, mobile };
+        const newUser = { name, email, mobile, designPreference, appointmentDate };
         const result = await usersCollection.insertOne(newUser);
 
         console.log("✅ User Inserted:", result);
@@ -108,6 +112,8 @@ app.post('/users', async (req, res) => {
         res.status(500).json({ error: "Error adding user: " + err.message });
     }
 });
+
+
 
 
 
