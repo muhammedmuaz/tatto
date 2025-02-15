@@ -1,46 +1,175 @@
-.form-container {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  form {
+/* .Home-video{
+    background-color: black;
+    width: 100vw;
+    height: 120vh;
+    margin-top: -32vh;
+} */
+video{
+    margin-top: 10vh;
+    height: 81vh;
+    width:99vw;
+    position: relative;
+    overflow: hidden;
+    /* height: 78vh; */
+}
+
+.banner-img{
+    width: 99.2vw;
+    height: 20vh;
+    margin-top: -.7vh;
+    margin-left: -.2vw;
+    
+}.offer{
+    color:white;
+    margin-top: -17vh;
+    margin-left: 35vw;
+    font-family: Beabs Neue, sans-serif;
+    font-size: 28px;
+}
+
+.image-container {
+    /* display: flex; */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; 
+    padding: 15px;
+}
+.image-row{
     display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 155px;
     padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-  
-  .submit-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
+    margin-left: 18.7vw;
+    margin-top: -3vh;
+}
+.image-row1{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 155px;
     padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-  }
-  
-  .submit-button:hover {
-    background-color: #555;
-  }
+    margin-top: 12vh;
+    margin-left: 18.7vw;
+}
+
+.image {
+    width: 45%; /* Ensures two images per row */
+    max-width: 360px; /* Set a max width for responsiveness */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 5px 5px 13px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effect */
+.image:hover {
+    transform: scale(1.05);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .image {
+        width: 90%; /* Full width on smaller screens */
+    }
+}
+
+
+.offer-box{
+    width: 16.4vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:-62.5vh;
+    margin-left: 23.4vw;
+    border-radius: 3px ;
+    display: flex;
+}
+.offer-text{
+    color:black;
+   margin-top: 4.7px;
+    margin-left: 15px;
+    font-weight: 600;
+    font-family:Bebas Neue, sans-serif ;
+    font-size: 120%;
+}
+
+
+.offer-box1{
+    width: 16.4vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:-5.4vh;
+    margin-left: 57.4vw;
+    border-radius: 3px ;
+    display: flex;
+}
+.offer-box3{
+    width: 16.4vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:59vh;
+    margin-left: 23.4vw;
+    border-radius: 3px ;
+    display: flex;
+}
+.offer-box4{
+    width: 16.4vw;
+    height: 5vh;
+    /* background-color: black; */
+    border: 1.5px solid black;
+    margin-top:-5.2vh;
+    margin-left: 57.4vw;
+    border-radius: 3px ;
+    display: flex;
+}
+
+.icon{
+    margin-top: 1.5vh;
+    margin-left: 1vw;
+}
+.icon1{
+    padding-top: 3.5vh;
+    margin-left: 1vw;
+}
+.icon3{
+    padding-top: 1.5vh;
+    margin-left: 1vw;
+}
+.icon4{
+    padding-top: 1.5vh;
+    margin-left: 1vw;
+}
+.heart{
+    background-color: black;
+    width: 98.9vw;
+    height: 45vh;
+    margin-top: vh;
+}
+.heart-text{
+    color:white;
+    font-size: 280%;
+    margin-left: 11vw;
+    padding-top: 2.5vh;
+}
+
+.heart-text1{
+    color:white;
+    font-size: 280%;
+    margin-left: 11vw;
+   margin-top: -6.2vh;
+}
+.heart-text3{
+    color:white;
+    font-size: 120%;
+    margin-left: 11vw;
+   margin-top: -6.2vh;
+   width: 37vw;
+}
+
+.tattoo-artist-home{
+    background-color: black;
+    width: 99vw;
+    height:15vh ;
+    margin-top: 4vh;
+}

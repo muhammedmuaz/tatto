@@ -10,8 +10,8 @@ const Contact = () => {
   name: '',
   email: '',
   mobile: '',
-  design: '',
-  appointment: ''
+  designPreference: '',
+  appointmentDate: ''
 });
 
 const handleChange = (e) => {
@@ -21,9 +21,8 @@ const handleChange = (e) => {
     [name]: value
   }));
 };
-
 const handleSubmit = async (e) => {
-  e.preventDefault(); // ✅ Prevents page refresh
+  e.preventDefault(); // ✅ Prevent page refresh
 
   if (!formData.name || !formData.email || !formData.mobile) {
     console.log("Please fill in all required fields.");
@@ -31,7 +30,7 @@ const handleSubmit = async (e) => {
   }
 
   try {
-    const response = await fetch('https://tattoos-website-6.onrender.com/users', {
+    const response = await fetch('https://tattoos-website-8.onrender.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,8 +51,8 @@ const handleSubmit = async (e) => {
       name: '',
       email: '',
       mobile: '',
-      design: '',
-      appointment: ''
+      designPreference: '',
+      appointmentDate: ''
     });
 
   } catch (error) {
@@ -100,7 +99,7 @@ const handleSubmit = async (e) => {
         </div>
         <div className="form-group">
           <label>Do You Have a Design in Mind?</label>
-          <select name="design" value={formData.design} onChange={handleChange}>
+          <select name="designPreference" value={formData.design} onChange={handleChange}>
             <option value="">Please Choose an Option</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
@@ -108,7 +107,7 @@ const handleSubmit = async (e) => {
         </div>
         <div className="form-group">
           <label>When Would You Like to Get This Tattoo?</label>
-          <select name="appointment" value={formData.appointment} onChange={handleChange}>
+          <select name="appointmentDate" value={formData.appointment} onChange={handleChange}>
             <option value="">Please Choose an Option</option>
             <option value="asap">As soon as possible</option>
             <option value="weekend">This weekend</option>
@@ -184,8 +183,10 @@ const handleSubmit = async (e) => {
         <div className="circle-5">
          <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png"/>
         </div>
-        
+        <div className="row"></div>
     </div>
+
+   
     </div>
   );
 }
