@@ -151,8 +151,8 @@ const Home = () => {
     </div>
 
     <h2 className="tattoo-categories">OUR TATTOO CATEGORIES</h2>
-
-      <div className="categories-container">
+     <div className="black"></div>
+     <div className="categories-container">
   {categories.length > 0 ? (
     <>
       {/* First row: First 3 categories */}

@@ -298,7 +298,15 @@ video{
     font-family: Beabs Neue, sans-serif;
 }
 
-
+.black{
+    background-color: black;
+    margin-top: 20vh;
+    width: 99vw;
+    height: 100vh;
+}
+.categories-container{
+    margin-top: -118vh;
+}
 .category-row {
     display: flex;
     justify-content: center;
@@ -306,6 +314,7 @@ video{
     margin-bottom: 20px;
     margin-left: -8.6vw;
     margin-top: 6vh;
+  
   }
   .category-card {
     text-align: center;
@@ -320,7 +329,7 @@ video{
     height: 300px; 
     object-fit: cover; 
     border-radius: 10px; 
-    box-shadow: 2.5px 2.5px 12px 8px rgba(154, 146, 146, 0.5);;
+    box-shadow: 3px 3px 33px rgba(0,0,0,0.5);
   }
   
   
