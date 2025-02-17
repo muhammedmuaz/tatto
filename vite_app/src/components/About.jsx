@@ -50,6 +50,7 @@
 
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
@@ -66,6 +67,7 @@ const About = () => {
       </div>
 
       {/* About Section */}
+      <div className="white">
       <div className="about-content">
         <h2 className="text2">ABOUT OUR STUDIO</h2>
         <p className="text3">
@@ -96,6 +98,7 @@ const About = () => {
           src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738609202/after-work-pic-on-client_e2ryw1.png"
           alt="After Tattoo"
         />
+      </div>
       </div>
 
       {/* Vision Divider */}
@@ -137,7 +140,7 @@ const About = () => {
       </div>
 
       <div className="about-button">
-        <h2 className="button-1">REACH OUR STUDIO</h2>
+        <Link className="button-1" to="/contact">REACH OUR STUDIO</Link>
       </div>
 
       <div className='about-footer'>
