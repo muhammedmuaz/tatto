@@ -173,3 +173,163 @@ video{
     height:15vh ;
     margin-top: 4vh;
 }
+.home-text{
+    color: white;
+    font-size: 180%;
+    font-family: Bebas Neue, sans-serif;
+    font-weight: 600;
+    margin-left: 35vw;
+    padding-top: 1.3vh;
+    letter-spacing: 2px;
+    display: flex;
+}
+.explore{
+    border: 2px solid white;
+    width: 18vw;
+    height: 2.7vw;
+    margin-left: 40.5vw;
+    margin-top: -4.2vh;
+    border-radius: 4px;
+}
+.explore-1{
+   color:white;
+   font-family: Bebas Neue, sans-serif;
+   font-weight: 600;
+   font-size: 140%;
+   margin-top: .5vh;
+   margin-left: 1.4vw;
+    
+}
+.svg-1{
+    margin-left: 2.2vw;
+    margin-top:-4vh;
+}
+.our-artist-home{
+    color:black;
+    margin-left: 43vw;
+    margin-top: 4vh;
+   font-size: 200%;
+   letter-spacing: 1.5px;
+   font-family: Beabs Neue, sans-serif;
+
+}
+.artist-img-home{
+    display: flex;
+    column-gap:3vw;
+}
+
+
+.eric-1{
+    width: 21vw;
+    margin-left: -9vw;
+    border-radius: 50%;
+    margin-top: 5vh;
+    margin-left: 3vw;
+}
+
+.eric-2{
+    width: 21vw;
+    margin-left: -9vw;
+    border-radius: 50%;
+    margin-top: 5vh;
+    margin-left: -110px;
+}
+.artist-name{
+    display: flex;
+    column-gap: 17.5vw;
+    margin-left: 18vw;
+    margin-top: -2vh;
+}
+.name{
+    color:black;
+    font-size: 160%;
+}
+.name-1{
+    color:black;
+    font-size: 160%;
+    margin-left: -.5vw;
+}
+.artist-portfolio{
+    display: flex;
+    margin-top: -1.6vh;
+  
+}
+.portfolio{
+    background-color: white;
+    width: 14vw;
+    height: 6vh;
+    border: 1px solid black;
+    border-radius: .3vw;
+    margin-left:15vw;
+    
+}
+.portfolio-1{
+    background-color: white;
+    width: 14vw;
+    height: 6vh;
+    border: 1px solid black;
+    border-radius: .3vw;
+    margin-left:14vw;
+    
+}
+.portfolio-2{
+    background-color: white;
+    width: 14vw;
+    height: 6vh;
+    border: 1px solid black;
+    border-radius: .3vw;
+    margin-left:13vw;
+    
+}
+.portfolio-text{
+    margin-top: 0vh;
+    margin-left: -3.4vw;
+    font-size: 140%;
+    font-family: Babas Neue, sans-serif;
+}
+
+.tattoo-categories{
+    color:black;
+    margin-left: 39vw;
+    margin-top: 13vh;
+    font-size: 180%;
+    font-weight: 700;
+    letter-spacing: .8px;
+    font-family: Beabs Neue, sans-serif;
+}
+
+.black{
+    background-color: black;
+    margin-top: 20vh;
+    width: 99vw;
+    height: 100vh;
+}
+.categories-container{
+    margin-top: -118vh;
+}
+.category-row {
+    display: flex;
+    justify-content: center;
+    gap: 14vw;
+    margin-bottom: 20px;
+    margin-left: -8.6vw;
+    margin-top: 6vh;
+  
+  }
+  .category-card {
+    text-align: center;
+    width: 200px;
+  }
+  .category-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }.category-image {
+    width: 300px;  
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    box-shadow: 3px 3px 33px rgba(0,0,0,0.5);
+  }
+  
+  
