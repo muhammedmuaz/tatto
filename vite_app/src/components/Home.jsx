@@ -3,11 +3,12 @@ import "./Home.css";
 
 const Home = () => {
   const [images, setImages] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch("https://tattoos-website-7.onrender.com/offer");
+        const response = await fetch(" http://localhost:3006/offer");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -20,6 +21,24 @@ const Home = () => {
     };
   
     fetchImages();
+  }, []);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("https://tattoos-website-3.onrender.com/homecategories");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched Tattoo Categories:", data); 
+        setCategories(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
   }, []);
   return (
     <div>
@@ -99,7 +118,75 @@ const Home = () => {
 
     <div className="tattoo-artist-home">
       <p className="home-text">DISCOVER TATTOO FOR YOU</p>
+      <div className="explore"><p className="explore-1">EXPLORE MORE</p>
+      
+</div>
     </div>
+
+    <h2 className="our-artist-home">OUR ARTIST</h2>
+
+    <div className="artist-img-home">
+      <div className="eric"> 
+        <img className="eric-1"eric src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738815718/th_id_OIP_12_nlojdd.png"/>
+      </div>
+         
+      <div className="parth-1">
+      <img className="eric-1"eric src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738780221/par-1_1_n107sg.png"/>
+      </div>
+
+      <div className="poufa">
+      <img className="eric-2"eric src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738815384/IMG_3884_1_n7nhl2.png"/>
+      </div>
+    </div>
+    <div className="artist-name">
+    <h2 className="name">Eric D` suza</h2>
+    <h2 className="name-1">PARTH VASANI</h2>
+    <h2 className="name">POUFA</h2>
+    </div>
+
+    <div className="artist-portfolio">
+      <button className="portfolio"><h3  className="portfolio-text"> PORTFOLIO</h3></button>
+      <button className="portfolio-1"><h3  className="portfolio-text"> PORTFOLIO</h3></button>
+      <button className="portfolio-2"><h3  className="portfolio-text"> PORTFOLIO</h3></button>
+    </div>
+
+    <h2 className="tattoo-categories">OUR TATTOO CATEGORIES</h2>
+
+      <div className="categories-container">
+  {categories.length > 0 ? (
+    <>
+      {/* First row: First 3 categories */}
+      <div className="category-row">
+        {categories.slice(0, 3).map((category, index) => (
+          <div key={index} className="category-card">
+            <img
+              src={category.imageUrl1 || category.imageurl} // Try both keys
+              alt={category.name}
+              className="category-image"
+            />
+            <h3 className="category-name">{category.name}</h3>
+          </div>
+        ))}
+      </div>
+
+      {/* Second row: Last 3 categories */}
+      <div className="category-row">
+        {categories.slice(-3).map((category, index) => (
+          <div key={index + 3} className="category-card">
+            <img
+              src={category.imageUrl1 || category.imageurl}
+              alt={category.name}
+              className="category-image"
+            />
+            <h3 className="category-name">{category.name}</h3>
+          </div>
+        ))}
+      </div>
+    </>
+  ) : (
+    <p>Loading categories...</p>
+  )}
+</div>
     </div>
   );
 };
