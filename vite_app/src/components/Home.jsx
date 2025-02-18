@@ -237,6 +237,15 @@ const Home = () => {
 </div>
 
   <h2 className="appoinment-1">GET AN APPOINMENT NOW</h2>
+  <div className="talk"><h2 className="talk-1">TALK TO US</h2></div>
+
+  <div className="self-journey">
+    <p className="self-1">Embark on a self-expression journey at  tattoo Dreamers Studio. Our tattoos go 
+     beyond ink, becoming a canvas for stories, symbols, and personal milestone. 
+     Each design holds the power to inspire, empower, and imprint your unique 
+     narrative on your skin. Embrace the art of individuality, where every tattoo 
+     is a declaration to your journey and an endless source of inspiration. </p>
+  </div>
     </div>
   );
 };

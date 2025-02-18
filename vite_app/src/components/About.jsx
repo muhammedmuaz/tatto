@@ -67,7 +67,7 @@ const About = () => {
       </div>
 
       {/* About Section */}
-      <div className="white">
+     
       <div className="about-content">
         <h2 className="text2">ABOUT OUR STUDIO</h2>
         <p className="text3">
@@ -99,7 +99,7 @@ const About = () => {
           alt="After Tattoo"
         />
       </div>
-      </div>
+      
 
       {/* Vision Divider */}
       <div className="vision-mission">

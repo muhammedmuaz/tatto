@@ -132,7 +132,7 @@ video{
     margin-left: 1vw;
 }
 .icon1{
-    padding-top: 3.5vh;
+    padding-top: 1.5vh;
     margin-left: 1vw;
 }
 .icon3{
@@ -246,6 +246,7 @@ video{
 .name{
     color:black;
     font-size: 160%;
+   
 }
 .name-1{
     color:black;
@@ -255,6 +256,7 @@ video{
 .artist-portfolio{
     display: flex;
     margin-top: -1.6vh;
+  
   
 }
 .portfolio{
@@ -285,8 +287,9 @@ video{
     
 }
 .portfolio-text{
-    margin-top: 0vh;
-    margin-left: -3.4vw;
+    color:black;
+    margin-top: .8vh;
+    margin-left: 1vw;
     font-size: 140%;
     font-family: Babas Neue, sans-serif;
 }
@@ -382,9 +385,39 @@ video{
     font-weight: bold;
   }
   .appoinment-1{
-    color:white;
+    color:black;
     font-size: 180%;
+    margin-top: 2vh;
+    margin-left: 37vw;
   }
   
-  
-  
+.talk{
+    border: 1px solid black;
+    border-radius: 0.3vw;
+    width: 15vw;
+    height: 6vh;
+    margin-left:43vw;
+    margin-top: -2vh;
+}
+.talk-1{
+    color:black;
+    font-size: 160%;
+    margin-top: .4vh;
+    margin-left: 1vw;
+    font-family: Bebas Neue,sans-serif;
+}
+.self-journey{
+    background-color: black;
+    width: 99vw;
+    height: 34vh;
+    margin-top: 5vh;
+}
+.self-1{
+    color:white;
+    margin-left: 10vw;
+    padding-top: 6.8vh;
+    width: 75vw;
+    font-size: 150%;
+    font-family: Bebas Neue, sans-serif;
+    letter-spacing: 1px;
+}

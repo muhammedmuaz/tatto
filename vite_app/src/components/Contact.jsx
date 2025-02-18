@@ -62,7 +62,7 @@ const handleSubmit = async (e) => {
   return (
     <div>
     <div>
-                <img className='contact' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738649242/g8e0eb7f9yvzv0brjds0.png"/>
+                <img className="contact-img" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738649242/g8e0eb7f9yvzv0brjds0.png"/>
           </div>
                 <div className='kiran'>
              <h2 className='contact-text'>TATTOOS DREMERS STUDIO  </h2>

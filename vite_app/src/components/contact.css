@@ -1,9 +1,9 @@
-.contact{
+.contact-img{
     width: 79vw;
     height: 80vh;
     margin-left: 10vw;
     border-radius: 1vw;
-    margin-top: 10.5vh;
+    margin-top: 12.5vh;
     animation: fadeInLeft 1s ease-out forwards;
 }
 .kiran{
@@ -436,3 +436,48 @@
 .row {
   @apply bg-white w-[79vw] h-[0.1vh] mt-[40vh] ml-[9vw];
 }
+
+
+body {
+  background-color: white;
+}
+
+.contact-form-container {
+  background-color: #000;
+  color: #fff;
+}
+
+.contact-footer {
+  background-color: black;
+}
+
+/* Rest of the CSS remains unchanged */
+
+.contact {
+  width: 79vw;
+  height: 80vh;
+  margin-left: 10vw;
+  border-radius: 1vw;
+  margin-top: 10.5vh;
+  animation: fadeInLeft 1s ease-out forwards;
+}
+
+.kiran {
+  background-color: black;
+  width: 79vw;
+  height: 35vh;
+  margin-left: 10vw;
+  margin-top: -5.2vh;
+  border-radius: 1vw;
+}
+
+/* ... (rest of the CSS remains unchanged) ... */
+
+.row {
+  background-color: white;
+  width: 79vw;
+  height: 0.1vh;
+  margin-top: 40vh;
+  margin-left: 9vw;
+}
+
