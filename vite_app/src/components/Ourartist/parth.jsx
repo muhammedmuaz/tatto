@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RealisticCategory = () => {
+const parth = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const RealisticCategory = () => {
   )
 }
 
-export default RealisticCategory
+export default parth

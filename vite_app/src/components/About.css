@@ -24,6 +24,7 @@
     padding-top: 2vh;
     
 }
+
 .text2{
     color:black;
     font-size: 35px;
@@ -75,6 +76,8 @@
     border-radius: 15px 15px 15px 15px;
     position: absolute;
 } */
+
+
 .container {
     position: absolute;
     padding-top:110vh;
@@ -238,3 +241,5 @@ padding-left: 10vw;
     margin-top: 455vh;
     position: absolute;
   }
+
+  

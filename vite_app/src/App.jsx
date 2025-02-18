@@ -5,12 +5,15 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import OurArtist from "./components/OurArtist";
+import Eric from "./components/Ourartist/Eric";
+import Parth from "./components/Ourartist/Parth";
+import Poufa from "./components/Ourartist/Poufa";
 // import OurCategories from "./components/OurCategories";
 import SmallCategory from "./components/Ourcategories/SmallCategory";
 import StipplingCategory from "./components/Ourcategories/StipplingCategory";
-import TravelCategory from "./components/Ourcategories/TravelCategory";
+import LoveCategory from "./components/Ourcategories/LoveCategory";
 import CoverCategory from "./components/Ourcategories/CoverCategory";
-import RealisticCategory from "./components/Ourcategories/RealisticCategory";
+import NatureCategory from "./components/Ourcategories/NatureCategory";
 import ReligiousCategory from "./components/Ourcategories/ReligiousCategory";
 import Contact from "./components/Contact";
 import Blog from "./components/Blog";
@@ -19,6 +22,7 @@ import "./App.css"; // Import CSS
 
 function App() {
   const [dropdown, setDropdown] = useState(false);
+  const [artistdropdown, setArtistDropdown] = useState(false);
 
   return (
     <Router>
@@ -36,9 +40,30 @@ function App() {
             <li>
               <Link to="/about">ABOUT</Link>
             </li>
-            <li>
+            
+            <li
+              className="categories-menu"
+              onMouseEnter={() => setArtistDropdown(true)}
+              onMouseLeave={() => setArtistDropdown(false)}
+            >
               <Link to="/our-artist">OUR ARTIST</Link>
+              {artistdropdown && (
+                <ul className="dropdown">
+                  <li className="small">
+                    <Link to="/ourartist/Eric">Eric D`suza</Link>
+                  </li>
+                  <li>
+                    <Link to="/ourartist/Parth">PARTH SAVANI</Link>
+                  </li>
+                  <li>
+                    <Link to="/ourArtist/Poufa">POUFA</Link>
+                  </li>
+                
+
+                </ul>
+              )}
             </li>
+
 
             {/* Dropdown for Our Categories */}
             <li
@@ -56,7 +81,7 @@ function App() {
                     <Link to="/our-categories/Stippling">STIPPLING</Link>
                   </li>
                   <li>
-                    <Link to="/our-categories/Travel">TRAVEL</Link>
+                    <Link to="/our-categories/Love">LOVE</Link>
                   </li>
                   <li>
                     <Link to="/our-categories/Religious">RELIGIOUS</Link>
@@ -65,7 +90,7 @@ function App() {
                     <Link to="/our-categories/Cover">COVER</Link>
                   </li>
                   <li>
-                    <Link to="/our-categories/Realistic">REALISTIC</Link>
+                    <Link to="/our-categories/Nature">NATURE</Link>
                   </li>
 
                 </ul>
@@ -85,15 +110,19 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/our-artist" element={<OurArtist />} />
+          <Route path="/ourartist/Eric" element={<Eric />} />
+          <Route path="/ourartist/Parth" element={<Parth />} />
+          <Route path="/ourartist/Poufa" element={<Poufa />} />
           {/* <Route path="/our-categories" element={<OurCategories />} /> */}
           <Route path="/our-categories/small" element={<SmallCategory />} />
           <Route path="/our-categories/Stippling" element={<StipplingCategory />} />
-          <Route path="/our-categories/Travel" element={<TravelCategory />} />
+          <Route path="/our-categories/Love" element={<LoveCategory />} />
           <Route path="/our-categories/Religious" element={<ReligiousCategory />} />
-          <Route path="/our-categories/Realistis" element={<RealisticCategory />} />
+          <Route path="/our-categories/Nature" element={<NatureCategory />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
         </Routes>
+          
       </div>
     </Router>
   );

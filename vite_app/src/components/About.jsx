@@ -50,6 +50,7 @@
 
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
@@ -66,6 +67,7 @@ const About = () => {
       </div>
 
       {/* About Section */}
+     
       <div className="about-content">
         <h2 className="text2">ABOUT OUR STUDIO</h2>
         <p className="text3">
@@ -97,6 +99,7 @@ const About = () => {
           alt="After Tattoo"
         />
       </div>
+      
 
       {/* Vision Divider */}
       <div className="vision-mission">
@@ -137,7 +140,7 @@ const About = () => {
       </div>
 
       <div className="about-button">
-        <h2 className="button-1">REACH OUR STUDIO</h2>
+        <Link className="button-1" to="/contact">REACH OUR STUDIO</Link>
       </div>
 
       <div className='about-footer'>

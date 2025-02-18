@@ -4,6 +4,9 @@
     height: 120vh;
     margin-top: -32vh;
 } */
+ .main{
+    background-color: white;
+ }
 video{
     margin-top: 10vh;
     height: 81vh;
@@ -129,7 +132,7 @@ video{
     margin-left: 1vw;
 }
 .icon1{
-    padding-top: 3.5vh;
+    padding-top: 1.5vh;
     margin-left: 1vw;
 }
 .icon3{
@@ -243,6 +246,7 @@ video{
 .name{
     color:black;
     font-size: 160%;
+   
 }
 .name-1{
     color:black;
@@ -252,6 +256,7 @@ video{
 .artist-portfolio{
     display: flex;
     margin-top: -1.6vh;
+  
   
 }
 .portfolio{
@@ -282,8 +287,9 @@ video{
     
 }
 .portfolio-text{
-    margin-top: 0vh;
-    margin-left: -3.4vw;
+    color:black;
+    margin-top: .8vh;
+    margin-left: 1vw;
     font-size: 140%;
     font-family: Babas Neue, sans-serif;
 }
@@ -331,5 +337,87 @@ video{
     border-radius: 10px; 
     box-shadow: 3px 3px 33px rgba(0,0,0,0.5);
   }
+  .col{
+    color:black;
+    margin-left: 31vw;
+    margin-top: 7vh;
+    letter-spacing: 1px;
+    font-family: Bebas Neue, sans-serif;
+  }
+  .col1{
+    color:black;
+    margin-left: 35vw;
+    margin-top: -2vh;
+    letter-spacing: 1px;
+    font-family: Bebas Neue, sans-serif;
+  }
+  .actors-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+  }
   
+  .actors-row {
+    display: flex;
+    gap: 160px; /* Space between actor cards */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: center;
+    margin-left: -11vw;
+  }
   
+  .actor-card {
+    text-align: center;
+    width: 220px; /* Adjust as needed */
+    padding: 10px;
+  }
+  
+  .actor-image {
+    width: 150%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 6px 6px 14px rgba(0,0,0,0.5);
+  }
+  
+  .actor-name {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .appoinment-1{
+    color:black;
+    font-size: 180%;
+    margin-top: 2vh;
+    margin-left: 37vw;
+  }
+  
+.talk{
+    border: 1px solid black;
+    border-radius: 0.3vw;
+    width: 15vw;
+    height: 6vh;
+    margin-left:43vw;
+    margin-top: -2vh;
+}
+.talk-1{
+    color:black;
+    font-size: 160%;
+    margin-top: .4vh;
+    margin-left: 1vw;
+    font-family: Bebas Neue,sans-serif;
+}
+.self-journey{
+    background-color: black;
+    width: 99vw;
+    height: 34vh;
+    margin-top: 5vh;
+}
+.self-1{
+    color:white;
+    margin-left: 10vw;
+    padding-top: 6.8vh;
+    width: 75vw;
+    font-size: 150%;
+    font-family: Bebas Neue, sans-serif;
+    letter-spacing: 1px;
+}

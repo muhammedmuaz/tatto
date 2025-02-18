@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TravelCategory = () => {
+const NatureCategory = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const TravelCategory = () => {
   )
 }
 
-export default TravelCategory
+export default NatureCategory

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [images, setImages] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [actors, setActors] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -40,8 +42,24 @@ const Home = () => {
 
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    const fetchActors = async () => {
+      try {
+        const response = await fetch(" http://localhost:3007/actors");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+        const data = await response.json();
+        console.log("Fetched Actors:", data);
+        setActors(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error("Error fetching actors:", error);
+      }
+    };
+    fetchActors();
+  }, []);
   return (
-    <div>
+    <div className="main">
       <div className="Home-container"></div>
       <div className="Home-video">
         <video className="video" src="https://alphatattooindia.com//wp-content//uploads//2024//05//main_video.mp4"
@@ -145,48 +163,89 @@ const Home = () => {
     </div>
 
     <div className="artist-portfolio">
-      <button className="portfolio"><h3  className="portfolio-text"> PORTFOLIO</h3></button>
-      <button className="portfolio-1"><h3  className="portfolio-text"> PORTFOLIO</h3></button>
-      <button className="portfolio-2"><h3  className="portfolio-text"> PORTFOLIO</h3></button>
+      <Link className="portfolio" to="./components/Ourartist/Eric"><h3  className="portfolio-text"> PORTFOLIO</h3></Link>
+      <Link className="portfolio-1" to="./components/Ourartist/Parth"><h3  className="portfolio-text"> PORTFOLIO</h3></Link>
+      <Link className="portfolio-2" to="./components/Ourartist/Poufa"><h3  className="portfolio-text"> PORTFOLIO</h3></Link>
     </div>
 
     <h2 className="tattoo-categories">OUR TATTOO CATEGORIES</h2>
      <div className="black"></div>
-     <div className="categories-container">
+    
+
+<div className="categories-container">
   {categories.length > 0 ? (
     <>
       {/* First row: First 3 categories */}
       <div className="category-row">
         {categories.slice(0, 3).map((category, index) => (
-          <div key={index} className="category-card">
-            <img
-              src={category.imageUrl1 || category.imageurl} // Try both keys
-              alt={category.name}
-              className="category-image"
-            />
-            <h3 className="category-name">{category.name}</h3>
-          </div>
-        ))}
-      </div>
-
-      {/* Second row: Last 3 categories */}
-      <div className="category-row">
-        {categories.slice(-3).map((category, index) => (
-          <div key={index + 3} className="category-card">
+          <Link
+            key={index}
+            to={`/our-categories/${category.name.toLowerCase()}`} // Convert to lowercase for consistency
+            className="category-card"
+          >
             <img
               src={category.imageUrl1 || category.imageurl}
               alt={category.name}
               className="category-image"
             />
             <h3 className="category-name">{category.name}</h3>
-          </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Second row: Last 3 categories */}
+      <div className="category-row">
+        {categories.slice(-3).map((category, index) => (
+          <Link
+            key={index + 3}
+            to={`/our-categories/${category.name.toLowerCase()}`}
+            className="category-card"
+          >
+            <img
+              src={category.imageUrl1 || category.imageurl}
+              alt={category.name}
+              className="category-image"
+            />
+            <h3 className="category-name">{category.name}</h3>
+          </Link>
         ))}
       </div>
     </>
   ) : (
     <p>Loading categories...</p>
   )}
+</div>;
+
+
+<h2 className="col">COLLABORATED WITH RENOWNED PERSONALITIES </h2>
+<h2 className="col1"> OUR JOURNEY WITH TALENTED ACTORS </h2>
+
+
+<div className="actors-container">
+  {actors.length > 0 ? (
+    <div className="actors-row">
+      {actors.map((actor, index) => (
+        <div key={index} className="actor-card">
+          <img src={actor.imageUrl2} alt={actor.name} className="actor-image" />
+          <h3 className="actor-name">{actor.name}</h3>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p>Loading actors...</p>
+  )}
 </div>
+
+  <h2 className="appoinment-1">GET AN APPOINMENT NOW</h2>
+  <div className="talk"><h2 className="talk-1">TALK TO US</h2></div>
+
+  <div className="self-journey">
+    <p className="self-1">Embark on a self-expression journey at  tattoo Dreamers Studio. Our tattoos go 
+     beyond ink, becoming a canvas for stories, symbols, and personal milestone. 
+     Each design holds the power to inspire, empower, and imprint your unique 
+     narrative on your skin. Embrace the art of individuality, where every tattoo 
+     is a declaration to your journey and an endless source of inspiration. </p>
+  </div>
     </div>
   );
 };
