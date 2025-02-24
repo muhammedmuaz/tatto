@@ -1,0 +1,145 @@
+.tattoo-studio {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    width: 99vw;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    padding: 120px 5% 160px;
+    background-color: #000;
+    height: 26vh;
+  }
+  
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .hero-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    padding-top: 1.5vw;
+    line-height: 1.2;
+    font-family: Bebas Neue, sans-serif;
+  }
+  
+  .hero-content p{
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: white;
+    max-width: 50vw;
+    font-family: Bebas Neue, sans-serif;
+  }
+  .wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(45deg, transparent 33.33%, #fff 33.33%, #fff 66.66%, transparent 66.66%),
+                linear-gradient(-45deg, transparent 33.33%, #fff 33.33%, #fff 66.66%, transparent 66.66%);
+    background-size: 20px 40px;
+    background-position: 0 -80px;
+  }
+  
+  /* Gallery Section */
+  .gallery-section {
+    background-color: #fff;
+    padding: 80px 5%;
+  }
+  
+  .gallery-section h2 {
+    color: #000;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .tattoo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .tattoo-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+  
+  .tattoo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .tattoo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .tattoo-card:hover .tattoo-overlay {
+    opacity: 1;
+  }
+  
+  .tattoo-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .like-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
+  .tattoo-grid .tattoo-card:nth-child(-n+9) .hover-overlay {
+    opacity: 0;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 8vw;
+    height: 4vw;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Spacing between logo and text */
+    transition: opacity 0.3s ease-in-out;
+    padding: 0px 1px;
+    border-radius: 5px;
+  }
+  
+  .tattoo-grid .tattoo-card:nth-child(-n+9):hover .hover-overlay {
+    opacity: 1;
+  }
+  
+  .artist-logo {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .artist-name {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
