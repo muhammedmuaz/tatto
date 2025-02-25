@@ -7,6 +7,8 @@ const TattooStudio = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  
     fetch('https://tattoos-website-small.onrender.com/small')
       .then((response) => {
         if (!response.ok) {
@@ -24,14 +26,15 @@ const TattooStudio = () => {
         setLoading(false);
       });
   }, []);
+  
 
   return (
     <div className="tattoo-studio">
       <section className="hero-section">
         <div className="hero-content">
           <h2>SMALL TATTOOS, BIG STORIES</h2>
-          <p>Hey, minimal tattoo lovers, we believe that a small tattoo can make a big statement. Our experienced artists are skilled at creating beautiful, minimalistic designs with expertise.</p>
-          <p>Whether it is a small symbol that carries a special meaning for you or a simple design that appeals to your senses, we're here to help bring your vision to life.</p>
+          <p className="p1">Hey, minimal tattoo lovers, we believe that a small tattoo can make a big statement. Our experienced artists are skilled at creating beautiful, minimalistic designs with expertise.</p>
+          <p className="p1">Whether it is a small symbol that carries a special meaning for you or a simple design that appeals to your senses, we're here to help bring your vision to life.</p>
         </div>
         {/* <div className="wave-divider"></div> */}
       </section>
