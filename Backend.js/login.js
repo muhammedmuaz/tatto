@@ -1,7 +1,7 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 const cors = require("cors");
-const nodemailer = require("nodemailer");  // Import nodemailer
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
@@ -99,5 +99,20 @@ app.post("/users", async (req, res) => {
     } catch (err) {
         console.error("❌ Error:", err);
         res.status(500).json({ error: "Error adding user or sending email: " + err.message });
+    }
+});
+
+// 📌 Add GET request handler to fetch all users
+app.get("/users", async (req, res) => {
+    try {
+        if (!usersCollection) {
+            return res.status(500).json({ error: "Database not initialized yet" });
+        }
+
+        const users = await usersCollection.find().toArray();
+        res.status(200).json(users);
+    } catch (err) {
+        console.error("❌ Error fetching users:", err);
+        res.status(500).json({ error: "Error fetching users: " + err.message });
     }
 });
