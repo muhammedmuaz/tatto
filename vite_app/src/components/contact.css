@@ -11,7 +11,7 @@
     width: 79vw ;
     height: 35vh;
     margin-left: 10vw;
-    margin-top: -5.2vh;
+    margin-top: -12.2vh;
     border-radius: 1vw;
     
 }
@@ -127,7 +127,7 @@
     background-color: black;
     width: 99vw;
     height: 170vh;
-    margin-top: 15vh;
+    margin-top: 12vh;
   }
   .dreamers{
     margin-left: 9vw;
@@ -495,9 +495,52 @@ body {
   animation: fadeInOut 3s ease-in-out;
 }
 
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateX(50px); }
-  20% { opacity: 1; transform: translateX(0); }
-  80% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(50px); }
+/* Add these styles to your contact.css file */
+
+/* Animation for elements that appear immediately on page load */
+.fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+/* Animation for elements that appear when scrolling */
+.enter-right {
+  animation: enter-right 1s ease-out forwards;
+}
+
+.enter-left {
+  animation: enter-left 1s ease-out forwards;
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Keyframes for entering from the right */
+@keyframes enter-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for entering from the left */
+@keyframes enter-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
