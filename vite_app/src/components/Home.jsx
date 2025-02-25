@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
@@ -38,75 +38,84 @@ const Home = () => {
   }, []);
   
 
-  
    const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    designPreference: '',
-    appointmentDate: ''
-  });
+      name: "",
+      email: "",
+      mobile: "",
+      designPreference: "",
+      appointmentDate: "",
+    });
   
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // ✅ Prevent page refresh
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState("");
+    const [showMessage, setShowMessage] = useState(false); // ✅ Defined state properly
   
-    if (!formData.name || !formData.email || !formData.mobile) {
-      console.log("Please fill in all required fields.");
-      return;
-    }
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    };
   
-    try {
-      const response = await fetch('https://tattoos-website-8.onrender.com/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    const handleSubmit = async (e) => {
+      e.preventDefault();
   
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Error ${response.status}: ${errorText}`);
+      if (!formData.name || !formData.email || !formData.mobile) {
+        setMessage("❌ Please fill in all required fields.");
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000); // ✅ Hide message after 3 sec
+        return;
       }
   
-      const data = await response.json();
-      console.log('Form submitted successfully:', data);
+      setLoading(true);
+      setMessage("");
+      setShowMessage(false);
   
-      // ✅ Reset the form fields after successful submission
-      setFormData({
-        name: '',
-        email: '',
-        mobile: '',
-        designPreference: '',
-        appointmentDate: ''
-      });
+      try {
+        const response = await fetch(
+          "https://tattoos-website-8.onrender.com/users",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
   
-    } catch (error) {
-      console.error('Form submission error:', error.message);
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Error ${response.status}: ${errorText}`);
+        }
+  
+        setMessage("✅ Form submitted successfully!");
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000); // ✅ Hide after 3 sec
+  
+        setFormData({
+          name: "",
+          email: "",
+          mobile: "",
+          designPreference: "",
+          appointmentDate: "",
+        });
+      } catch (error) {
+        console.error("Form submission error:", error.message);
+        setMessage("❌ Submission failed. Please try again.");
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000);
+      } finally {
+        setLoading(false);
+      }
+    };
+  const formRef = useRef(null);
+
+  const scrollToForm = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  document.addEventListener("DOMContentLoaded", function () {
-    // Select buttons
-    const scrollButtons = document.querySelectorAll(".offer-text");
-
-    scrollButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const formSection = document.getElementById("offer-form");
-            if (formSection) {
-                formSection.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    });
-});
-
 
   return (
     <div className="main">
@@ -153,26 +162,26 @@ const Home = () => {
       </div>
 
       <div className="offer-box">
-        <p className="offer-text"  >GRAB THIS OFFER</p>
+        <p className="offer-text"  onClick={scrollToForm}  >GRAB THIS OFFER</p>
         <svg className="icon" width="" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="black"/>
         </svg>
       </div>
 
         <div className="offer-box1">
-        <p className="offer-text">GRAB THIS OFFER</p>
+        <p className="offer-text"   onClick={scrollToForm}>GRAB THIS OFFER</p>
         <svg className="icon1" width="" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="black"/>
 </svg></div>
 
         <div className="offer-box3">
-        <p className="offer-text">GRAB THIS OFFER</p>
+        <p className="offer-text"  onClick={scrollToForm}>GRAB THIS OFFER</p>
         <svg className="icon3" width="" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="black"/>
 </svg></div>
 
         <div className="offer-box4">
-        <p className="offer-text">GRAB THIS OFFER</p>
+        <p className="offer-text"   onClick={scrollToForm}>GRAB THIS OFFER</p>
         <svg className="icon4" width="" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="black"/>
 </svg></div>
@@ -326,43 +335,81 @@ const Home = () => {
 
     <p className="home-talk1">Nervous or excited? We’ve got you!
     Let’s talk and create the perfect tattoo for you.</p>
-    <div className="home-form-container">
 
-    <section id="offer-form">
+    <section id="offer-form"  ref={formRef}>
+    <div>
+      {/* ✅ Success/Error Message Display */}
+      {showMessage && (
+        <div className="message-box">{message}</div>
+      )}
+    <div className="home-form-container">
     <form className="contact-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="your">Your Name (Required)</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label>Your Email (Required)</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label>Your Phone Number (Required)</label>
-          <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange} required />
-        </div>
-        <div className="form-group">
-          <label>Do You Have a Design in Mind?</label>
-          <select name="designPreference" value={formData.design} onChange={handleChange}>
-            <option value="">Please Choose an Option</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label>When Would You Like to Get This Tattoo?</label>
-          <select name="appointmentDate" value={formData.appointment} onChange={handleChange}>
-            <option value="">Please Choose an Option</option>
-            <option value="asap">As soon as possible</option>
-            <option value="weekend">This weekend</option>
-            <option value="specific-date">Specific date</option>
-          </select>
-        </div>
-        <button type="submit" className="submit-button">SUBMIT</button>
-      </form>
-      </section>
+          <div className="form-group">
+            <label>Your Name (Required)</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Your Email (Required)</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Your Phone Number (Required)</label>
+            <input
+              type="tel"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Do You Have a Design in Mind?</label>
+            <select
+              name="designPreference"
+              value={formData.designPreference}
+              onChange={handleChange}
+            >
+              <option value="">Please Choose an Option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>When Would You Like to Get This Tattoo?</label>
+            <select
+              name="appointmentDate"
+              value={formData.appointmentDate}
+              onChange={handleChange}
+            >
+              <option value="">Please Choose an Option</option>
+              <option value="asap">As soon as possible</option>
+              <option value="weekend">This weekend</option>
+              <option value="specific-date">Specific date</option>
+            </select>
+          </div>
+
+          {/* ✅ Show loading button */}
+          <button type="submit" className="submit-button" disabled={loading}>
+            {loading ? "Submitting..." : "SUBMIT"}
+          </button>
+        </form>
+      
       </div>
+      </div>
+      </section>
+      
   </div>
   
 

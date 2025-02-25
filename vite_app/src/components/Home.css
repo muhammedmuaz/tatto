@@ -545,4 +545,23 @@ video{
     margin-top: 40vh;
     margin-left: 9vw;
   }
+  .message-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: black; /* Green color for success */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(50px); }
+    20% { opacity: 1; transform: translateX(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(50px); }
+  }
   
