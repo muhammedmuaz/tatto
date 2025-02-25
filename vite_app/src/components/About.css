@@ -27,13 +27,14 @@
 
 .text2{
     color:black;
-    font-size: 35px;
+    font-size: 40px;
     font-family:Bebas Neue, sans-serif;
     font-weight: 600;
     padding-left: 10vw;
-    padding-top: 115vh;
+    padding-top: 110vh;
     letter-spacing: px;
     position: absolute;
+    width: 30vw;
 }
 .text3{
     color:rgb(54, 51, 51);
@@ -148,7 +149,7 @@
 .team{
   color: white;
   padding-left: 40vw;
-  padding-top: 10vh;
+  padding-top: 6vh;
 }
 .team1{
     background-color: black;
@@ -230,8 +231,8 @@ padding-left: 10vw;
     font-size: 25px;
     font-family: Bebas Neue, sans-serif;
     font-weight: 600;
-    padding-left: 1vw;
-   margin-top: 1.5vh;
+    padding-left: 2vw;
+    margin-top: 5vh;
     
 }
 .about-footer{
@@ -240,6 +241,51 @@ padding-left: 10vw;
     height: 170vh;
     margin-top: 455vh;
     position: absolute;
+  }
+
+  /* Add these styles to your About.css file */
+
+/* Animation for entering from the left */
+.fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  /* Animation for entering from the right */
+  .enter-right {
+    animation: enter-right 1s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 2;
+    }
+  }
+  
+  /* Keyframes for entering from the left */
+  @keyframes enter-left {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Keyframes for entering from the right */
+  @keyframes enter-right {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 
   
