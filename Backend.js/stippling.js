@@ -82,12 +82,12 @@ app.get("/stippling", async (req, res) => {
 app.post("/stippling", upload.single("image"), async (req, res) => {
     try {
         const newOffer = {
-            name: req.body.name,
-            price: req.body.price,
+           
+            likes: req.body.likes,
             imageUrl: req.file ? `/uploads/${req.file.filename}` : null,
         };
 
-        const result = await offer.insertOne(newOffer);
+        const result = await smallcategory.insertOne(newOffer);
         res.status(201).json(result);
     } catch (err) {
         res.status(500).send("Error saving offer: " + err.message);
