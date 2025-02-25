@@ -8,7 +8,8 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
   const [actors, setActors] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {  
+    window.scrollTo(0, 0);
     const fetchData = async () => {
       try {
         const [imagesRes, categoriesRes, actorsRes] = await Promise.all([
@@ -319,13 +320,15 @@ const Home = () => {
      is a declaration to your journey and an endless source of inspiration. </p>
   </div>
  
- <section id="offer-form">
+
   <div className="bg-white">
     <h1 className="home-talk">LET`S TALK TO US</h1>
 
     <p className="home-talk1">Nervous or excited? We’ve got you!
     Let’s talk and create the perfect tattoo for you.</p>
     <div className="home-form-container">
+
+    <section id="offer-form">
     <form className="contact-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="your">Your Name (Required)</label>
@@ -358,9 +361,10 @@ const Home = () => {
         </div>
         <button type="submit" className="submit-button">SUBMIT</button>
       </form>
+      </section>
       </div>
   </div>
-  </section>
+  
 
   <div className='home-footer'>
       <div>
