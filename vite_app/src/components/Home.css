@@ -355,6 +355,41 @@ video{
     border-radius: 10px; 
     box-shadow: 3px 3px 33px rgba(0,0,0,0.5);
   }
+  .category-name {
+    font-weight: bold; 
+    font-size: 20px; 
+    text-transform: uppercase; 
+    display: inline-flex; /* Keeps the content aligned properly */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 2px 18px;
+    border: 1px solid white; 
+    border-radius: .3vw;
+    margin-left: 2.5vw;
+    color: white; 
+    text-decoration: none;
+    width: auto; /* Auto width to prevent misalignment */
+    white-space: nowrap; /* Prevents text wrapping */
+    transition: all 0.3s ease-in-out;
+}
+
+.category-name::after {
+    content: " →"; /* Adds arrow */
+    font-size: 35px; /* Adjust arrow size without affecting text */
+    font-weight: bold;
+    line-height: 1;
+    display: inline-block; /* Ensures proper alignment */
+    vertical-align: middle; 
+    padding-bottom: .4vw;/* Keeps the arrow aligned with the text */
+}
+
+.category-name:hover {
+    background-color: white;
+    color: black; 
+}
+
+
   .col{
     color:black;
     margin-left: 31vw;
@@ -474,7 +509,7 @@ video{
     max-width: 500px;
     margin: 0 auto;
     margin-left: 54vw;
-    margin-top: -57vh;
+    margin-top: -55vh;
     padding: 20px;
     background-color: #000;
     color: #fff;
@@ -536,7 +571,7 @@ video{
     background-color: black;
     width: 99vw;
     height: 170vh;
-    margin-top: 5vh;
+    margin-top: 8vh;
   }
   .row {
     background-color: white;
