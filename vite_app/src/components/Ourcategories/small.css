@@ -10,7 +10,7 @@
     position: relative;
     padding: 120px 5% 160px;
     background-color: #000;
-    height: 26vh;
+    height: 22vh;
   }
   
   .hero-content {
@@ -22,17 +22,19 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    padding-top: 1.5vw;
+    margin-top: 2.4vh;
     line-height: 1.2;
     font-family: Bebas Neue, sans-serif;
   }
   
-  .hero-content p{
+  .hero-content .p1{
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    margin-top: 1.8vh;
+    margin-left: .5vw;
     color: white;
-    max-width: 50vw;
+    width: 80vw;
     font-family: Bebas Neue, sans-serif;
   }
   .wave-divider {

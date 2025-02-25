@@ -26,11 +26,14 @@
   font-family: Bebas Neue, sans-serif;
 }
 
-.hero-content p {
+.hero-content .p2 {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  color: #ccc;
+  margin-top: 2vh;
+  width: 80vw;
+  margin-left: .5vw;
+  color: white;
   max-width: 800px;
 }
 
@@ -89,8 +92,11 @@
   padding: 1rem;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   opacity: 0;
-  transition: opacity 0.3s ease;
+
 }
+
+
+
 
 .tattoo-card:hover .tattoo-overlay {
   opacity: 1;
@@ -100,15 +106,7 @@
   transform: scale(1.05);
 }
 
-.like-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
+
 
 /* Aftercare Section */
 .aftercare-section {
