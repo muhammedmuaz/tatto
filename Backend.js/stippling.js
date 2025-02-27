@@ -1,4 +1,3 @@
-
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 const cors = require("cors");
@@ -82,8 +81,7 @@ app.get("/stippling", async (req, res) => {
 app.post("/stippling", upload.single("image"), async (req, res) => {
     try {
         const newOffer = {
-           
-            likes: req.body.likes,
+            likes: req.body.likes || 0, // Default likes to 0 if not provided
             imageUrl: req.file ? `/uploads/${req.file.filename}` : null,
         };
 
@@ -94,4 +92,24 @@ app.post("/stippling", upload.single("image"), async (req, res) => {
     }
 });
 
+// 🟢 POST: Like a tattoo
+app.post("/stippling/_id/likes", async (req, res) => {
+    try {
+        const tattooId = req.params.id;
 
+        // Use new ObjectId(tattooId) instead of ObjectId(tattooId)
+        const result = await smallcategory.updateOne(
+            { _id: new ObjectId(tattooId) },
+            { $inc: { likes: 1 } }
+        );
+
+        if (result.modifiedCount === 0) {
+            return res.status(404).json({ error: "Tattoo not found" });
+        }
+
+        res.status(200).json({ message: "Tattoo liked successfully" });
+    } catch (err) {
+        console.error("❌ Error liking tattoo:", err);
+        res.status(500).json({ error: "Error liking tattoo: " + err.message });
+    }
+});

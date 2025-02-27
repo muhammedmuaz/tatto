@@ -22,7 +22,7 @@
   font-weight: 700;
   margin-bottom: 2rem;
   line-height: 1.2;
-  margin-top: 4vh;
+  margin-top: 2vh;
   font-family: Bebas Neue, sans-serif;
 }
 
@@ -86,20 +86,33 @@
 
 .tattoo-overlay {
   position: absolute;
-  bottom: 0;
+  display: flex;
   left: 0;
   right: 0;
-  padding: 1rem;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   opacity: 0;
-
+  transition: opacity 0.3s ease;
+   margin-bottom: -1.5vh;
 }
 
+.tattoo-overlay .stippling-hover {
+  width: 4vw;
+    
+  margin-left: -.5vw;
+}
 
+.tattoo-overlay .text-stippling {
+  color: white;
+  font-size: 18px;
+  margin-top: 2vh;
+  margin-left: .5vw;
+  font-weight: 600;
+}
 
 
 .tattoo-card:hover .tattoo-overlay {
   opacity: 1;
+  
 }
 
 .tattoo-card:hover img {
@@ -210,3 +223,6 @@
     font-size: 1.5rem;
   }
 }
+
+
+

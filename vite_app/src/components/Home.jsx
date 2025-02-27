@@ -1,9 +1,10 @@
 import React, { useEffect, useState,useRef } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const Home = () => {
+  const { pathname } = useLocation(); 
   const [images, setImages] = useState([]);
   const [categories, setCategories] = useState([]);
   const [actors, setActors] = useState([]);
@@ -13,9 +14,9 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [imagesRes, categoriesRes, actorsRes] = await Promise.all([
-          fetch("https://tattoos-website-offer-js1-d516.onrender.com/offer"),
-          fetch("https://tattoos-website-3.onrender.com/homecategories"),
-          fetch("https://tattoos-website-actors-js.onrender.com/actors"),
+          fetch("http://localhost:3006/offer"),
+          fetch("http://localhost:3008/homecategories"),
+          fetch("http://localhost:3007/actors"),
         ]);
   
         if (!imagesRes.ok || !categoriesRes.ok || !actorsRes.ok) {
@@ -35,7 +36,7 @@ const Home = () => {
     };
   
     fetchData();
-  }, []);
+  },  []);
   
 
    const [formData, setFormData] = useState({
@@ -74,7 +75,7 @@ const Home = () => {
   
       try {
         const response = await fetch(
-          "https://tattoos-website-8.onrender.com/users",
+          "http://localhost:3000/users",
           {
             method: "POST",
             headers: {
@@ -193,19 +194,44 @@ const Home = () => {
           <p className="heart-text3">Our Customised tattoos have made a serious mark on people in India and abroad and changed lives for some. Our team approach lets you sit at the table with us while we take the stress of making a tattoo design completely off your plate. We promise that you’ll feel the love, and see the difference creative collaboration makes. </p>
         </div>
 
-    <div className="tattoo-artist-home">
-      <p className="home-text">DISCOVER TATTOO FOR YOU</p>
-      <div className="explore" onClick={() => {
-      document.getElementById("home-category").scrollIntoView({ behavior: "smooth" });
-      }}>
-      <p className="explore-1">EXPLORE MORE</p>
-      <svg className="explore-icon" width="26" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="white"/>
-      </svg>
+        <div className="tattoo-artist-home">
+      {/* Background Video */}
+      <video autoPlay loop muted className="background-video">
+        <source
+          src="https://alphatattooindia.com/wp-content/uploads/2024/05/import_61c082d6899921.13979377.webm"
+          type="video/webm"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay Content */}
+      <div className="overlay">
+        <p className="home-text">DISCOVER TATTOO FOR YOU</p>
+        <div
+          className="explore"
+          onClick={() => {
+            document
+              .getElementById("home-category")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          <p className="explore-1">EXPLORE MORE</p>
+          <svg
+            className="explore-icon"
+            width="26"
+            height="16"
+            viewBox="0 0 26 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z"
+              fill="white"
+            />
+          </svg>
+        </div>
       </div>
-
     </div>
-
     <h2 className="our-artist-home">OUR ARTIST</h2>
 
     <div className="artist-img-home">
@@ -246,7 +272,7 @@ const Home = () => {
      <div className="black"></div>
     
      <section id="home-category">
-   <div className="categories-container">
+   <div className="categories-container"   >
   {categories.length > 0 ? (
     <>
       {/* First row: First 3 categories */}
@@ -314,12 +340,11 @@ const Home = () => {
 </div>
 
   <h2 className="appoinment-1">GET AN APPOINMENT NOW</h2>
-  <div className="talk" onClick={() => {
-      document.getElementsByI("offer-form").scrollIntoView({ behavior: "smooth" });
-      }}><h2 className="talk-1">TALK TO US</h2>
+  <div className="talk"><Link className="talk-1"  to="/contact">TALK TO US</Link>
   <svg className="talk-icon" width="" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M25.7071 8.70711C26.0976 8.31658 26.0976 7.68342 25.7071 7.29289L19.3431 0.928932C18.9526 0.538408 18.3195 0.538408 17.9289 0.928932C17.5384 1.31946 17.5384 1.95262 17.9289 2.34315L23.5858 8L17.9289 13.6569C17.5384 14.0474 17.5384 14.6805 17.9289 15.0711C18.3195 15.4616 18.9526 15.4616 19.3431 15.0711L25.7071 8.70711ZM0 9H25V7H0V9Z" fill="black"/>
-        </svg></div>
+        </svg>
+        </div>
 
   <div className="self-journey">
     <p className="self-1">Embark on a self-expression journey at  tattoo Dreamers Studio. Our tattoos go 
@@ -413,74 +438,75 @@ const Home = () => {
   </div>
   
 
-  <div className='home-footer'>
-      <div>
-      <img className='dreamers' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673259/dreamers_ryrags.png"/>
-      </div>
-      <div>
-        {/* <img className='dreamers-1' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673783/footer-1_sxmzys.png"/> */}
-
-        <ul className='footer-2'>
-          <li className="location">LOCATION</li>
-          <li className="use">USEFUL LINKS</li>
-          <li className="quick">QUICK LINKS</li>
-          <li className="follow">FOLLOW US</li>
-        </ul>
-        
-          
-         <div className="footer-3"></div>
-         <div className="footer-4"></div>
-         <div className="footer-5"></div>
-         <div className="footer-6"></div>
-
-        <div className="circle">
-         <img className="icon-1" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734578/location-icon-vector_qrxo2q.png"/>
+  
+         <div className='home-footer'>
+          <div>
+            <img className='dreamers' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673259/dreamers_ryrags.png" alt="Dreamers" />
+          </div>
+          <div>
+            <ul className='footer-2'>
+              <li className="location">LOCATION</li>
+              <li className="use">USEFUL LINKS</li>
+              <li className="quick">QUICK LINKS</li>
+              <li className="follow">FOLLOW US</li>
+            </ul>
+            
+            <div className="footer-3"></div>
+            <div className="footer-4"></div>
+            <div className="footer-5"></div>
+            <div className="footer-6"></div>
+  
+            <div className="circle">
+              <img className="icon-1" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734578/location-icon-vector_qrxo2q.png" alt="Location Icon" />
+            </div>
+            <p className="p1">A Wing 101, 1st Floor, Samadhan Tower by Asshna Developer, Swami Vivekananda Rd, opposite IndusInd Bank, Maharashtra Housing and Area Development Authority Colony, Best Nagar, Goregaon West, Mumbai, Maharashtra 400104</p>
+  
+            <div className="circle-1">
+              <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734738/th_id_OIP_7_sziayt.png" alt="Email Icon" />
+            </div>
+            <p className="p2">work@tattoodreamers.com</p>
+  
+            <div className="circle-2">
+              <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734988/th_id_OIP_8_mdh0ga.png" alt="Phone Icon" />
+            </div>
+            <p className="p3">+91 9106003382</p>
+          </div>
+  
+          <ul className="links">
+            <li><Link to="/" className="footer-route">Home</Link ></li>
+            <li>Academy</li>
+            <li><Link to="/our-artist" className="footer-route">our Artist</Link ></li>
+            <li><Link to="/our-categories/small" className="footer-route">Our Categories</Link ></li>
+            <li>Home</li>
+            <li>Pricing</li>
+          </ul>
+  
+          <ul className="links-1">
+            <li>Terms</li>
+            <li><Link to="/about" className="footer-route">About</Link></li>
+            <li>Privacy Policy</li>
+            <li><Link to="/blog" className="footer-route">Blog</Link></li>
+          </ul>
+  
+          <div className="circle-3">
+                   <Link to="https://github.com/kiranchaudhary18"  target="_blank">
+                   <img className="icon-3" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740680431/th_id_OIP_21_qktu4l.png" alt="Social Icon" />
+                   </Link>
+                 </div>
+         
+                 <div className="circle-4">
+                 <Link to="https://x.com/home?lang=en-in"  target="_blank">
+                   <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png" alt="Social Icon" />
+                   </Link>
+                 </div>
+         
+                 <div className="circle-5">
+                 <Link to="https://www.instagram.com/chaudhary_kiran_022/?next=%2F"  target="_blank">
+                   <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
+                   </Link>
+                 </div>
+          <div className="row"></div>
         </div>
-         <p className="p1">A Wing 101, 1st Floor, Samadhan Tower by Asshna Developer, Swami Vivekananda Rd, opposite IndusInd Bank, Maharashtra Housing
-           and Area Development Authority Colony, Best Nagar, Goregaon West, Mumbai, Maharashtra 400104</p>
-
-        <div className="circle-1">
-         <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734738/th_id_OIP_7_sziayt.png"/>
-        </div>
-        <p className="p2">work@tattoodreamers.com</p>
-
-        <div className="circle-2">
-         <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734988/th_id_OIP_8_mdh0ga.png"/>
-        </div>
-        <p className="p3">+91 9106003382</p>
-      </div>
-
-      <ul className="links">
-        <li>Home</li>
-        <li>Academy</li>
-        <li>our Artist</li>
-        <li>Our Categories</li>
-        <li>Home</li>
-        <li>Pricing</li>
-      </ul>
-
-      <ul className="links-1">
-        <li>Terms</li>
-        <li>About</li>
-        <li>Privacy Policy</li>
-        <li>Blog</li>
-        
-      </ul>
-
-      <div className="circle-3">
-         <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738596/th_id_OIP_9_ixrdwx.png"/>
-        </div>
-
-        <div className="circle-4">
-         <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png"/>
-        </div>
-
-        <div className="circle-5">
-         <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png"/>
-        </div>
-        <div className="row"></div>
-    </div>
-
     </div>
   );
 };
