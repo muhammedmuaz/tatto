@@ -11,8 +11,9 @@
     width: 79vw ;
     height: 35vh;
     margin-left: 10vw;
-    margin-top: -12.2vh;
+    margin-top: 0vh;
     border-radius: 1vw;
+    
     
 }
 .contact-text{
@@ -121,13 +122,17 @@
   }
   
   .submit-button:hover {
-    background-color: #555;
+    background-color: black;
+    color:white;
+    border: 1px solid white;
   }
+  
   .contact-footer{
     background-color: black;
     width: 99vw;
     height: 170vh;
     margin-top: 12vh;
+    position:absolute;
   }
   .dreamers{
     margin-left: 9vw;
@@ -241,6 +246,16 @@
     height: 1.7vw;
     background-size: contain;
   }
+  .icon-3{
+    margin-left:vw;
+    margin-top: 1vh;
+    /* background-image: url('https://img.icons8.com/color/48/000000/facebook-f.png'); */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 2.7vw;
+    height: 1.7vw;
+    background-size: contain;
+  }
   .p1{
     color:white;
     font-family: Bebas Neue, sans-serif;
@@ -274,6 +289,15 @@
     font-family: Bebas neue, sans-serif;
     row-gap: 1.1vw;
     font-weight: 500;
+    cursor: pointer;
+  }
+
+  .footer-route{
+    color:white;
+  }
+
+  .footer-route:hover{
+    color:#90807d;
   }
   .links-1{
     color:white;
