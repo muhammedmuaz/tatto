@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import './stippling.css';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 const StipplingTattoo = () => {
   const [tattoos, setTattoos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,48 @@ const StipplingTattoo = () => {
 
     fetchTattoos();
   }, []);
+
+  // Function to handle liking a tattoo
+  const handleLike = async (tattooId) => {
+    try {
+      // Find the current tattoo's state
+      const tattoo = tattoos.find(t => t._id === tattooId);
+      if (!tattoo) return;
+  
+      // Determine new like status
+      const isLiked = tattoo.liked || false; 
+      const updatedLikes = isLiked ? tattoo.likes - 1 : tattoo.likes + 1;
+  
+      // Optimistically update UI
+      setTattoos(tattoos.map(t => 
+        t._id === tattooId ? { ...t, likes: updatedLikes, liked: !isLiked } : t
+      ));
+  
+      // Send request to update likes on the server
+      const response = await fetch(`http://localhost:3011/stippling/${tattooId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ likes: updatedLikes }), // Send correct updated count
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update like status');
+      }
+  
+      // Get the updated tattoo data from the server
+      const updatedTattoo = await response.json();
+  
+      // Ensure the UI state matches the final server response
+      setTattoos(tattoos.map(t => 
+        t._id === updatedTattoo._id ? updatedTattoo : t
+      ));
+    } catch (error) {
+      console.error('Error updating like status:', error);
+    }
+  };
+  
 
   return (
     <div className="stippling-tattoo">
@@ -59,10 +102,14 @@ const StipplingTattoo = () => {
                 <div key={tattoo._id} className="tattoo-card">
                   <img src={tattoo.imageurl} className="tattoo-image" />
                   <div className="tattoo-overlay">
-                    
-                      <img className="stippling-hover" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Logo"  />
-                      <span className="text-stippling">POUFA</span>
-                  
+                    <img className="stippling-hover" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Logo" />
+                    <span className="text-stippling">POUFA</span>
+                  </div>
+                  <div className="like-button-container">
+                    <button className="like-button" onClick={() => handleLike(tattoo._id)}>
+                      <Heart size={24} className={tattoo.liked ? 'liked' : ''} />
+                      <span>{tattoo.likes || 0}</span>
+                    </button>
                   </div>
                 </div>
               ))
@@ -74,7 +121,6 @@ const StipplingTattoo = () => {
       </section>
 
       {/* Footer Section */}
-      
       <div className='small-footer'>
         <div>
           <img className='dreamers' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673259/dreamers_ryrags.png" alt="Dreamers" />
