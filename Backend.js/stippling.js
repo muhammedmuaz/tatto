@@ -4,6 +4,7 @@ const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+
 require("dotenv").config(); // Load environment variables
 
 const app = express();
@@ -111,5 +112,34 @@ app.post("/stippling/_id/likes", async (req, res) => {
     } catch (err) {
         console.error("❌ Error liking tattoo:", err);
         res.status(500).json({ error: "Error liking tattoo: " + err.message });
+    }
+});
+
+
+app.put('/stippling/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Convert id to ObjectId using the already imported ObjectId
+        const tattoo = await smallcategory.findOne({ _id: new ObjectId(id) });
+
+        if (!tattoo) {
+            return res.status(404).json({ error: 'Tattoo not found' });
+        }
+
+        // Update tattoo likes
+        const updatedTattoo = await smallcategory.updateOne(
+            { _id: new ObjectId(id) },
+            { $inc: { likes: 1 }, $set: { liked: true } }
+        );
+
+        if (updatedTattoo.modifiedCount === 0) {
+            return res.status(400).json({ error: 'Failed to update tattoo' });
+        }
+
+        res.status(200).json({ message: 'Tattoo liked successfully' });
+    } catch (error) {
+        console.error("Error updating tattoo:", error.message);
+        res.status(500).json({ error: 'Server error', details: error.message });
     }
 });
