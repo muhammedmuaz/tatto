@@ -17,7 +17,7 @@ const TattooStudio = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched Data:", data); // Debugging API response
+        console.log("Fetched Data:", data); 
         setTattoos(data);
         setLoading(false);
       })
@@ -48,7 +48,7 @@ const TattooStudio = () => {
     tattoos.map((tattoo, index) => (
       <div key={tattoo.id || index} className="tattoo-card">
         <div className="tattoo-image-container">
-          <img src={tattoo.imageurl} alt={`Tattoo design ${index + 1}`} className="tattoo-image" />
+          <img src={tattoo.imageUrl} alt={`Tattoo design ${index + 1}`} className="tattoo-image" />
           
           {/* Apply hover effect for the first three images */}
           {index < 9 && (
