@@ -28,51 +28,57 @@ const StipplingTattoo = () => {
     fetchTattoos();
   }, []);
 
-  // Function to handle liking a tattoo
+ 
   const handleLike = async (tattooId) => {
     try {
-      // Find the current tattoo's state
-      const tattoo = tattoos.find(t => t._id === tattooId);
+    
+      const tattoo = tattoos.find((t) => t._id === tattooId);
       if (!tattoo) return;
-  
-      // Determine new like status
-      const isLiked = tattoo.liked || false; 
+
+      
+      const isLiked = tattoo.liked || false;
       const updatedLikes = isLiked ? tattoo.likes - 1 : tattoo.likes + 1;
-  
-      // Optimistically update UI
-      setTattoos(tattoos.map(t => 
-        t._id === tattooId ? { ...t, likes: updatedLikes, liked: !isLiked } : t
-      ));
-  
-      // Send request to update likes on the server
+
+      
+      setTattoos((prevTattoos) =>
+        prevTattoos.map((t) =>
+          t._id === tattooId ? { ...t, likes: updatedLikes, liked: !isLiked } : t
+        )
+      );
+
+      
       const response = await fetch(`http://localhost:3011/stippling/${tattooId}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ likes: updatedLikes }), // Send correct updated count
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ likes: updatedLikes, liked: !isLiked }), 
       });
-  
-      if (!response.ok) {
-        throw new Error('Failed to update like status');
-      }
-  
-      // Get the updated tattoo data from the server
+
+      if (!response.ok) throw new Error('Failed to update like status');
+
+      
       const updatedTattoo = await response.json();
-  
-      // Ensure the UI state matches the final server response
-      setTattoos(tattoos.map(t => 
-        t._id === updatedTattoo._id ? updatedTattoo : t
-      ));
+
+      
+      setTattoos((prevTattoos) =>
+        prevTattoos.map((t) =>
+          t._id === updatedTattoo._id ? updatedTattoo : t
+        )
+      );
     } catch (error) {
       console.error('Error updating like status:', error);
+
+      
+      setTattoos((prevTattoos) =>
+        prevTattoos.map((t) =>
+          t._id === tattooId ? { ...t, likes: tattoo.likes, liked: tattoo.liked } : t
+        )
+      );
     }
   };
   
-
   return (
     <div className="stippling-tattoo">
-      {/* Hero Section */}
+   
       <section className="hero-section">
         <div className="hero-content">
           <h2>STIPPLING TATTOOS</h2>
@@ -89,7 +95,7 @@ const StipplingTattoo = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
+   
       <section className="gallery-section">
         <h2>OUR STIPPLING TATTOOS</h2>
         
@@ -106,10 +112,11 @@ const StipplingTattoo = () => {
                     <span className="text-stippling">POUFA</span>
                   </div>
                   <div className="like-button-container">
-                    <button className="like-button" onClick={() => handleLike(tattoo._id)}>
-                      <Heart size={24} className={tattoo.liked ? 'liked' : ''} />
-                      <span>{tattoo.likes || 0}</span>
-                    </button>
+                  <button className="like-button" onClick={() => handleLike(tattoo._id)}>
+  <Heart size={24} className={tattoo.liked ? 'liked' : ''} fill={tattoo.liked ? 'red' : 'none'} />
+  <span>{tattoo.likes ?? 0}</span>
+</button>
+
                   </div>
                 </div>
               ))
