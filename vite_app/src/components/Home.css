@@ -7,22 +7,59 @@
  .main{
     background-color: white;
  }
-video{
+/* video{
     margin-top: 10vh;
     height: 81vh;
     width:99vw;
     position: relative;
     overflow: hidden;
-    /* height: 78vh; */
+   
+} */
+.Home-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.Home-video {
+  position: relative;
+  width: 100%;
+  height: 82vh; /* Adjustable */
+  overflow: hidden;
+  margin-top: 10vh;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .Home-video {
+      height: 50vh; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .Home-video {
+      height: 40vh; /* Further adjustment */
+  }
 }
 
 .banner-img{
     width: 99.2vw;
     height: 20vh;
-    margin-top: -.9vh;
+    margin-top: -8vh;
     margin-left: -.2vw;
     
-}.offer{
+}
+.offer{
     color:white;
     margin-top: -17vh;
     margin-left: 35vw;

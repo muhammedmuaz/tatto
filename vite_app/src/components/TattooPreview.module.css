@@ -1,0 +1,445 @@
+/* TattooPreview.module.css */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    margin-left: 6vw;
+  }
+  
+  .header {
+    margin-left: 27vw;
+    margin-bottom: 40px;
+    margin-top: 10vh;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left: 7vw;
+  }
+  
+  .header p {
+    font-size: 1.1rem;
+    color: #666;
+  }
+  
+  .mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    /* margin-left: 15vw; */
+  }
+  
+  @media (min-width: 768px) {
+    .mainContent {
+      flex-direction: row;
+    }
+    
+    .leftColumn {
+      flex: 3;
+    }
+    
+    .rightColumn {
+      flex: 2;
+    }
+  }
+  
+  .leftColumn, .rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    overflow: hidden;
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cardTitle::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background-color: #3b82f6;
+    margin-right: 10px;
+    border-radius: 2px;
+  }
+  
+  .uploadArea {
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f9fafb;
+  }
+  
+  .uploadArea:hover {
+    border-color: #3b82f6;
+    background-color: #f0f7ff;
+  }
+  
+  .uploadIcon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .uploadText {
+    margin-bottom: 20px;
+    color: #6b7280;
+  }
+  
+  .previewContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .previewCanvas {
+    max-width: 100%;
+    height: auto;
+    cursor: move;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .controlGroup {
+    margin-bottom: 20px;
+  }
+  
+  .controlLabel {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #4b5563;
+  }
+  
+  .sliderContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .slider {
+    flex: 1;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e5e7eb;
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3b82f6;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3b82f6;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sliderValue {
+    min-width: 40px;
+    text-align: center;
+    font-weight: 500;
+    color: #4b5563;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .switchContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .sliderSwitch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .sliderSwitch:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .sliderSwitch {
+    background-color: #3b82f6;
+  }
+  
+  input:checked + .sliderSwitch:before {
+    transform: translateX(26px);
+  }
+  
+  .colorOptions {
+    margin-bottom: 20px;
+  }
+  
+  .colorGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .colorPicker {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+  .colorSwatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid #e5e7eb;
+    transition: transform 0.2s;
+  }
+  
+  .colorSwatch:hover {
+    transform: scale(1.1);
+  }
+  
+  .buttonGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 0.95rem;
+  }
+  
+  .btnPrimary {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .btnPrimary:hover {
+    background-color: #2563eb;
+  }
+  
+  .btnSecondary {
+    background-color: #f3f4f6;
+    color: #4b5563;
+  }
+  
+  .btnSecondary:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .btnIcon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+  }
+  
+  .tattooSelectionPlaceholder {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+  }
+  
+  .tattooSelection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .selectWrapper {
+    margin-bottom: 10px;
+  }
+  
+  .select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    font-size: 1rem;
+    color: #4b5563;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    cursor: pointer;
+  }
+  
+  .select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+  
+  .tattooGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+  }
+  
+  .tattooItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .tattooItem:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .tattooItem.selected {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+  }
+  
+  .tattooItem img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    border-radius: 4px;
+  }
+  
+  .tattooItem p {
+    font-size: 0.85rem;
+    text-align: center;
+    color: #4b5563;
+  }
+  
+  .customUpload {
+    margin-top: 10px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .recommendationItem {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .recommendationIcon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+  }
+  
+  .recommendationText h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #374151;
+  }
+  
+  .recommendationText p {
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    .buttonGroup {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+    }
+    
+    .tattooGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      padding: 40px;
+    }
+    
+    .tattooGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }

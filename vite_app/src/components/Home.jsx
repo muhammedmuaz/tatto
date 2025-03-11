@@ -1,10 +1,10 @@
 import React, { useEffect, useState,useRef } from "react";
 import "./Home.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 
 const Home = () => {
-  const { pathname } = useLocation(); 
+ 
   const [images, setImages] = useState([]);
   const [categories, setCategories] = useState([]);
   const [actors, setActors] = useState([]);
@@ -14,9 +14,9 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [imagesRes, categoriesRes, actorsRes] = await Promise.all([
-          fetch("http://localhost:3006/offer"),
-          fetch("http://localhost:3008/homecategories"),
-          fetch("http://localhost:3007/actors"),
+          fetch("https://tattoos-website-9-offer.onrender.com/offer"),
+          fetch("https://tattoos-website-9-categories.onrender.com/homecategories"),
+          fetch("https://tattoos-website-9-actors.onrender.com/actors"),
         ]);
   
         if (!imagesRes.ok || !categoriesRes.ok || !actorsRes.ok) {
@@ -75,7 +75,7 @@ const Home = () => {
   
       try {
         const response = await fetch(
-          "http://localhost:3000/users",
+          "https://tattoos-website-9-login.onrender.com/users",
           {
             method: "POST",
             headers: {
@@ -120,19 +120,19 @@ const Home = () => {
 
   return (
     <div className="main">
-      <div className="Home-container"></div>
+      <div className="Home-container">
       <div className="Home-video">
-        <video className="video" src="https://alphatattooindia.com//wp-content//uploads//2024//05//main_video.mp4"
+        <video
+          className="video"
+          src="https://alphatattooindia.com/wp-content/uploads/2024/05/main_video.mp4"
           autoPlay
           muted
           loop
           playsInline
-          // width="90%"
-          // height="120vh"
-          style={{ objectFit: "cover"}}
+          style={{ objectFit: "cover" }}
         />
-
-       </div>
+      </div>
+    </div>
 <div className="banner">
       <img className="banner-img" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738903818/tringle-3_utewtd.png"/>
       <h2 className="offer">CHECK OUT OUR LATEST OFFER</h2>
@@ -361,79 +361,51 @@ const Home = () => {
     <p className="home-talk1">Nervous or excited? We’ve got you!
     Let’s talk and create the perfect tattoo for you.</p>
 
-    <section id="offer-form"  ref={formRef}>
-    <div>
-      {/* ✅ Success/Error Message Display */}
-      {showMessage && (
-        <div className="message-box">{message}</div>
-      )}
+    <section id="offer-form" ref={formRef}>
+  <div>
+    {/* ✅ Success/Error Message Display */}
+    {showMessage && <div className="message-box">{message}</div>}
     <div className="home-form-container">
-    <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Your Name (Required)</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Your Email (Required)</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Your Phone Number (Required)</label>
-            <input
-              type="tel"
-              name="mobile"
-              value={formData.mobile}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Do You Have a Design in Mind?</label>
-            <select
-              name="designPreference"
-              value={formData.designPreference}
-              onChange={handleChange}
-            >
-              <option value="">Please Choose an Option</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label>When Would You Like to Get This Tattoo?</label>
-            <select
-              name="appointmentDate"
-              value={formData.appointmentDate}
-              onChange={handleChange}
-            >
-              <option value="">Please Choose an Option</option>
-              <option value="asap">As soon as possible</option>
-              <option value="weekend">This weekend</option>
-              <option value="specific-date">Specific date</option>
-            </select>
-          </div>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Your Name (Required)</label>
+          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Your Email (Required)</label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Your Phone Number (Required)</label>
+          <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Do You Have a Design in Mind?</label>
+          <select name="designPreference" value={formData.designPreference} onChange={handleChange}>
+            <option value="">Please Choose an Option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>When Would You Like to Get This Tattoo?</label>
+          <select name="appointmentDate" value={formData.appointmentDate} onChange={handleChange}>
+            <option value="">Please Choose an Option</option>
+            <option value="asap">As soon as possible</option>
+            <option value="weekend">This weekend</option>
+            <option value="specific-date">Specific date</option>
+          </select>
+        </div>
 
-          {/* ✅ Show loading button */}
-          <button type="submit" className="submit-button" disabled={loading}>
-            {loading ? "Submitting..." : "SUBMIT"}
-          </button>
-        </form>
-      
-      </div>
-      </div>
-      </section>
+        {/* ✅ Show loading button */}
+        <button type="submit" className="submit-button" disabled={loading}>
+          {loading ? "Submitting..." : "SUBMIT"}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
       
   </div>
   

@@ -97,7 +97,7 @@ function App() {
                 <Link to="/contact">CONTACT</Link>
               </li>
               <li>
-                <Link to="/blog">BLOG</Link>
+                <Link to="/blog">AI TATTOO</Link>
               </li>
             </ul>
           </div>
