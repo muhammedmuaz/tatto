@@ -12,7 +12,7 @@ const StipplingTattoo = () => {
     window.scrollTo(0, 0);
     const fetchTattoos = async () => {
       try {
-        const response = await fetch('http://localhost:3011/stippling');
+        const response = await fetch('https://tattoos-website-9-stippling.onrender.com/stippling');
         if (!response.ok) {
           throw new Error('Failed to fetch tattoos');
         }
@@ -47,7 +47,7 @@ const StipplingTattoo = () => {
       );
 
       
-      const response = await fetch(`http://localhost:3011/stippling/${tattooId}`, {
+      const response = await fetch(`https://tattoos-website-9-stippling.onrender.com/stippling/${tattooId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ likes: updatedLikes, liked: !isLiked }), 

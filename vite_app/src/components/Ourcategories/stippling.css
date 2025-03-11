@@ -219,6 +219,13 @@
   display: flex;
   gap: 1rem;
 }
+.row {
+  background-color: white;
+  width: 79vw;
+  height: 0.1vh;
+  margin-top: 40vh;
+  margin-left: 9vw;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
