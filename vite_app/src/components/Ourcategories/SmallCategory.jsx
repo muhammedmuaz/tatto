@@ -9,7 +9,7 @@ const TattooStudio = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   
-    fetch(' http://localhost:3010/small')
+    fetch(' https://tattoos-website-9-small1.onrender.com/small')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch data');
