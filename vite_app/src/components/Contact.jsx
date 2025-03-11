@@ -91,7 +91,7 @@ const Contact = () => {
       }
 
       // Submit the form data
-      const submitResponse = await fetch(" http://localhost:3000/users", {
+      const submitResponse = await fetch(" https://tattoos-website-9-login.onrender.com/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -141,6 +141,7 @@ const Contact = () => {
       <p className="get-1">Ready to make your tattoo dreams a reality? Fill</p>
       <p className="get-2">out the form and let's make it happen!</p>
       <img className="map" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738740145/map_sedcwz.png" alt="Map" />
+
 
       <div ref={contactFormContainerRef}>
         {showMessage && (
