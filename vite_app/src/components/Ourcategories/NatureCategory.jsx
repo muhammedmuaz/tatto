@@ -24,8 +24,8 @@ const NatureTattoo = () => {
   return (
     <div className="nature-tattoo">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="sm-section">
+        <div className="sm-content">
           <h2>NATURE TATTOOS</h2>
           <p className="p2">Nature tattoos capture the beauty of the earth, 
             from towering trees to flowing rivers. Each design connects the soul to the wild and free spirit of nature.</p>

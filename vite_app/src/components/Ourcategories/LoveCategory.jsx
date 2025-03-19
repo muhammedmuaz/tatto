@@ -27,8 +27,8 @@ const LoveTattoo = () => {
   return (
     <div className="love-tattoo">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="sm-section">
+        <div className="sm-content">
           <h2>LOVE TATTOOS</h2>
           <p className="p4"> Love tattoos are more than just ink—they're symbols of deep emotions, memories, and connections
              that last forever. Whether it's a heart, a name, or a meaningful design, each piece tells a unique love story.</p>
