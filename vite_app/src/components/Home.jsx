@@ -3,9 +3,10 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 // Initialize Stripe with your publishable key
-const stripePromise = loadStripe('pk_test_51QREzbGzvn2xju5ejFTJzqm2HX3RZiyDBbbxT8EIVB568UB72NlPYlMb8yYhekEnP0ChNpzbWzh4lz1oGhA7iLo000G3mPnGlv'); // Replace with your actual Stripe publishable key
+const stripePromise = loadStripe('pk_test_51QREzbGzvn2xju5ejFTJzqm2HX3RZiyDBbbxT8EIVB568UB72NlPYlMb8yYhekEnP0ChNpzbWzh4lz1oGhA7iLo000G3mPnGlv');
 
 // Payment Form Component
 const PaymentForm = ({ onClose, amount }) => {
@@ -34,7 +35,7 @@ const PaymentForm = ({ onClose, amount }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ amount: amount * 100 }), // Convert to cents
+        body: JSON.stringify({ amount: amount * 100 }),
       });
 
       if (!response.ok) {
@@ -98,29 +99,41 @@ const Home = () => {
   const [images, setImages] = useState([]);
   const [categories, setCategories] = useState([]);
   const [actors, setActors] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [reviewFormData, setReviewFormData] = useState({
+    name: '',
+    rating: 5,
+    message: '',
+    image: null
+  });
   const formRef = useRef(null);
 
   useEffect(() => {  
     window.scrollTo(0, 0);
     const fetchData = async () => {
       try {
-        const [imagesRes, categoriesRes, actorsRes] = await Promise.all([
+        const [imagesRes, categoriesRes, actorsRes, reviewsRes] = await Promise.all([
           fetch("https://tattoos-website-9-offer.onrender.com/offer"),
           fetch("https://tattoos-website-9-categories.onrender.com/homecategories"),
           fetch("https://tattoos-website-9-actors.onrender.com/actors"),
+          fetch("http://localhost:3006/reviews")
         ]);
   
-        if (!imagesRes.ok || !categoriesRes.ok || !actorsRes.ok) {
+        if (!imagesRes.ok || !categoriesRes.ok || !actorsRes.ok || !reviewsRes.ok) {
           throw new Error("One or more requests failed");
         }
   
         const imagesData = await imagesRes.json();
         const categoriesData = await categoriesRes.json();
         const actorsData = await actorsRes.json();
+        const reviewsData = await reviewsRes.json();
   
         setImages(Array.isArray(imagesData) ? imagesData : []);
         setCategories(Array.isArray(categoriesData) ? categoriesData : []);
         setActors(Array.isArray(actorsData) ? actorsData : []);
+        setReviews(Array.isArray(reviewsData) ? reviewsData : []);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -140,8 +153,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
-  const [showPayment, setShowPayment] = useState(false); // State for payment popup
-  const [paymentAmount] = useState(50); // Fixed payment amount, adjust as needed
+  const [showPayment, setShowPayment] = useState(false);
+  const [paymentAmount] = useState(50);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -203,6 +216,52 @@ const Home = () => {
     }
   };
 
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', reviewFormData.name);
+    formData.append('rating', reviewFormData.rating);
+    formData.append('message', reviewFormData.message);
+    if (reviewFormData.image) {
+      formData.append('image', reviewFormData.image);
+    }
+
+    try {
+      const response = await fetch('http://localhost:3006/reviews', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        setShowReviewForm(false);
+        setReviewFormData({
+          name: '',
+          rating: 5,
+          message: '',
+          image: null
+        });
+        setMessage('Review submitted successfully and pending approval');
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000);
+      }
+    } catch (error) {
+      console.error('Error submitting review:', error);
+    }
+  };
+
+  const handlePrevReview = () => {
+    setCurrentReviewIndex((prev) =>
+      prev === 0 ? reviews.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextReview = () => {
+    setCurrentReviewIndex((prev) =>
+      prev === reviews.length - 1 ? 0 : prev + 1
+    );
+  };
+
   const scrollToForm = () => {
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: "smooth" });
@@ -228,6 +287,7 @@ const Home = () => {
           />
         </div>
       </div>
+
       <div className="banner">
         <img className="banner-img" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738903818/tringle-3_utewtd.png"/>
         <h2 className="offer">CHECK OUT OUR LATEST OFFER</h2>
@@ -261,7 +321,6 @@ const Home = () => {
         </svg>
       </div>
 
-      {/* Other offer boxes remain unchanged */}
       <div className="offer-box1">
         <p className="offer-text" onClick={scrollToForm}>GRAB THIS OFFER</p>
         <svg className="icon1" width="" height="16" viewBox="0 0 26 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -289,7 +348,220 @@ const Home = () => {
         <p className="heart-text3">Our Customised tattoos have made a serious mark on people in India and abroad...</p>
       </div>
 
-      {/* Rest of your existing JSX remains unchanged until the form section */}
+      {/* Reviews Section */}
+      <div className="reviews-section">
+        <div className="reviews-header">
+          <h2 className="reviews-title">CLIENT TESTIMONIALS</h2>
+          <p className="reviews-subtitle">What our clients say about their experience</p>
+
+          <button
+            className="add-review-button"
+            onClick={() => setShowReviewForm(true)}
+          >
+            <span className="button-text">ADD YOUR REVIEW</span>
+            <Star className="button-icon" size={18} />
+          </button>
+        </div>
+
+        {reviews.length > 0 ? (
+          <div className="reviews-grid">
+            {reviews.slice(currentReviewIndex, currentReviewIndex + 3).map((review, index) => (
+              <div key={index} className="review-card">
+                <div className="review-card-inner">
+                  <div className="review-header">
+                    <div className="reviewer-info">
+                      <div className="reviewer-avatar">
+                        {review.name.charAt(0).toUpperCase()}
+                      </div>
+                      <div className="reviewer-details">
+                        <h3 className="reviewer-name">{review.name}</h3>
+                        <div className="rating">
+                          {[...Array(review.rating)].map((_, i) => (
+                            <Star key={i} size={16} fill="#FFD700" color="#FFD700" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="review-date">
+                      {new Date(review.createdAt).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </div>
+                  </div>
+
+                  {review.imageUrl && (
+                    <div className="review-image-container">
+                      <img
+                        src={`http://localhost:3006${review.imageUrl}`}
+                        alt="Tattoo review"
+                        className="review-image"
+                      />
+                    </div>
+                  )}
+
+                  <div className="review-content">
+                    <p className="review-message">{review.message}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="no-reviews">
+            <Star size={48} className="no-reviews-icon" />
+            <p>No reviews yet. Be the first to share your experience!</p>
+          </div>
+        )}
+
+        <div className="carousel-controls">
+          <button
+            className="carousel-button prev"
+            onClick={handlePrevReview}
+            disabled={currentReviewIndex === 0}
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <div className="carousel-indicators">
+            {Array(Math.ceil(reviews.length / 3)).fill(0).map((_, i) => (
+              <button
+                key={i}
+                className={`indicator ${i === Math.floor(currentReviewIndex / 3) ? 'active' : ''}`}
+                onClick={() => setCurrentReviewIndex(i * 3)}
+                aria-label={`Go to review page ${i + 1}`}
+              />
+            ))}
+          </div>
+          <button
+            className="carousel-button next"
+            onClick={handleNextReview}
+            disabled={currentReviewIndex >= reviews.length - 3}
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
+        {showReviewForm && (
+          <div className="review-form-overlay">
+            <div className="review-form-container">
+              <div className="form-header">
+                <h3>Share Your Experience</h3>
+                <p className="form-subtitle">Tell us about your tattoo journey</p>
+              </div>
+
+              <div className="form-scroll-container">
+                <form onSubmit={handleReviewSubmit} className="review-form">
+                  <div className="form-group">
+                    <label htmlFor="name">
+                      <span className="label-text">Name</span>
+                      <span className="required">*</span>
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      value={reviewFormData.name}
+                      onChange={(e) => setReviewFormData({
+                        ...reviewFormData,
+                        name: e.target.value
+                      })}
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>
+                      <span className="label-text">Rating</span>
+                      <span className="required">*</span>
+                    </label>
+                    <div className="rating-input">
+                      {[...Array(5)].map((_, i) => (
+                        <button
+                          type="button"
+                          key={i}
+                          className={`rating-star ${i < reviewFormData.rating ? 'active' : ''}`}
+                          onClick={() => setReviewFormData({
+                            ...reviewFormData,
+                            rating: i + 1
+                          })}
+                        >
+                          <Star
+                            size={28}
+                            fill={i < reviewFormData.rating ? "#FFD700" : "none"}
+                            color="#FFD700"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="message">
+                      <span className="label-text">Your Message</span>
+                      <span className="required">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      value={reviewFormData.message}
+                      onChange={(e) => setReviewFormData({
+                        ...reviewFormData,
+                        message: e.target.value
+                      })}
+                      placeholder="Share your experience (minimum 20 characters)"
+                      required
+                      minLength={20}
+                      rows={4}
+                    />
+                    <span className="character-count">
+                      {reviewFormData.message.length}/20 characters minimum
+                    </span>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="image">Upload Tattoo Image</label>
+                    <div className="file-input-container">
+                      <input
+                        id="image"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setReviewFormData({
+                          ...reviewFormData,
+                          image: e.target.files[0]
+                        })}
+                        className="file-input"
+                      />
+                      <label htmlFor="image" className="file-input-label">
+                        <span className="file-input-text">Choose File</span>
+                        <span className="file-input-icon">📷</span>
+                      </label>
+                      {reviewFormData.image && (
+                        <span className="file-name">
+                          {reviewFormData.image.name}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="form-buttons">
+                    <button type="submit" className="submit-review-button">
+                      Submit Review
+                    </button>
+                    <button
+                      type="button"
+                      className="cancel-button"
+                      onClick={() => setShowReviewForm(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
       <div className="tattoo-artist-home">
         <video autoPlay loop muted className="background-video">
           <source src="https://alphatattooindia.com/wp-content/uploads/2024/05/import_61c082d6899921.13979377.webm" type="video/webm" />
@@ -306,7 +578,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Artist section */}
       <h2 className="our-artist-home">OUR ARTIST</h2>
       <div className="artist-img-home">
         <div className="eric"> 
@@ -342,7 +613,6 @@ const Home = () => {
         </Link>
       </div>
 
-      {/* Categories section */}
       <h2 className="tattoo-categories">OUR TATTOO CATEGORIES</h2>
       <div className="black"></div>
       <section id="home-category">
@@ -357,6 +627,7 @@ const Home = () => {
                   </Link>
                 ))}
               </div>
+              
               <div className="category-row">
                 {categories.slice(-3).map((category, index) => (
                   <Link key={index + 3} to={`/our-categories/${category.name.toLowerCase()}`} className="category-card">
@@ -374,7 +645,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Actors section */}
       <h2 className="col">COLLABORATED WITH RENOWNED PERSONALITIES</h2>
       <h2 className="col1">OUR JOURNEY WITH TALENTED ACTORS</h2>
       <div className="actors-container">
@@ -406,7 +676,7 @@ const Home = () => {
 
       <div className="bg-white">
         <h1 className="home-talk">LET`S TALK TO US</h1>
-        <p className="home-talk1">Nervous or excited? We’ve got you! Let’s talk and create the perfect tattoo for you.</p>
+        <p className="home-talk1">Nervous or excited? We've got you! Let's talk and create the perfect tattoo for you.</p>
 
         <section id="offer-form" ref={formRef}>
           <div>
@@ -442,13 +712,13 @@ const Home = () => {
                     <option value="specific-date">Specific date</option>
                   </select>
                 </div>
-                <div className="form-buttons">
-                  <button type="submit" className="submit-button" disabled={loading}>
+                <div className="form-buttonstwo">
+                  <button type="submit" className="submit-buttontwo" disabled={loading}>
                     {loading ? "Submitting..." : "SUBMIT"}
                   </button>
                   <button 
                     type="button" 
-                    className="payment-button" 
+                    className="payment-buttontwo" 
                     onClick={handlePaymentClick} 
                     disabled={loading}
                   >
@@ -466,7 +736,6 @@ const Home = () => {
         </section>
       </div>
 
-      {/* Footer section remains unchanged */}
       <div className='home-footer'>
         <div>
           <img className='dreamers' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673259/dreamers_ryrags.png" alt="Dreamers" />
