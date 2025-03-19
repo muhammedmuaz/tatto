@@ -1,24 +1,24 @@
 .tattoo-studio {
     background-color: #000;
     color: #fff;
-    min-height: 100vh;
+    min-height: 80vh;
     width: 99vw;
   }
   
   /* Hero Section */
-  .hero-section {
+  .sm-section {
     position: relative;
     padding: 120px 5% 160px;
     background-color: #000;
     height: 22vh;
   }
   
-  .hero-content {
+  .sm-content {
     max-width: 1200px;
     margin: 0 auto;
   }
   
-  .hero-content h2 {
+  .sm-content h2 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
@@ -27,7 +27,7 @@
     font-family: Bebas Neue, sans-serif;
   }
   
-  .hero-content .p1{
+  .sm-content .p1{
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;

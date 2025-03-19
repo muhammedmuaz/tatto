@@ -79,8 +79,8 @@ const StipplingTattoo = () => {
   return (
     <div className="stippling-tattoo">
    
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="sm-section">
+        <div className="sm-content">
           <h2>STIPPLING TATTOOS</h2>
           <p className='p2'>
             "Stippling tattoos bring art to life with thousands of tiny dots, 
