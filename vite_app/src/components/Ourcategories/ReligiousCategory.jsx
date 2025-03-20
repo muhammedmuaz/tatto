@@ -77,8 +77,8 @@ const ReligiousTattoo = () => {
   return (
     <div className="religious-tattoo">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="sm-section">
+        <div className="sm-content">
           <h2>RELIGIOUS TATTOOS</h2>
           <p className="p2">"Religious tattoos symbolize faith and devotion, marking a spiritual 
             journey on the skin. Each design holds deep meaning, reflecting belief and inner strength."</p>

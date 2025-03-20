@@ -51,6 +51,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './About.css';
+import './Home.css';
 
 const About = () => {
   const workspaceRef = useRef(null);
@@ -280,7 +281,7 @@ const About = () => {
                  <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
                  </Link>
                </div>
-        <div className="row"></div>
+        <div className="home-row"></div>
       </div>
     </div>
   );

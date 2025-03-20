@@ -634,19 +634,57 @@ left: 0;
   background-color: #555;
 }
 
-.home-footer{
+.home-footer, .about-footer, .Artist-footer, .small-footer {
   background-color: black;
   width: 99vw;
   height: 170vh;
   margin-top: 8vh;
+  position: relative;
+  box-sizing: border-box;
 }
-.row {
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .home-footer, .about-footer, .Artist-footer, .small-footer {
+    height: 150vh;
+    padding: 20px;
+  }
+}
+
+/* Footer horizontal line */
+.home-row {
   background-color: white;
   width: 79vw;
   height: 0.1vh;
   margin-top: 40vh;
   margin-left: 9vw;
+  position: relative;
 }
+
+/* Social media icons positioning */
+.circle-3, .circle-4, .circle-5 {
+  position: relative;
+  z-index: 2;
+}
+
+/* Footer content positioning */
+.footer-2, .footer-3, .footer-4, .footer-5, .footer-6 {
+  position: relative;
+  z-index: 2;
+}
+
+/* Links in footer */
+.links, .links-1 {
+  position: relative;
+  z-index: 2;
+}
+
+/* Footer logo */
+.dreamers {
+  position: relative;
+  z-index: 2;
+}
+
 .message-box {
   position: fixed;
   top: 20px;
@@ -715,5 +753,12 @@ left: 0;
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+  .home-footer {
+    height: 150vh;
   }
 }

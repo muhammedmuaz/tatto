@@ -191,7 +191,7 @@ const Home = () => {
           <p className="heart-text">Every tattoos is </p>
           <p className="heart-text1"> <b>a work of Heart</b> </p>
 
-          <p className="heart-text3">Our Customised tattoos have made a serious mark on people in India and abroad and changed lives for some. Our team approach lets you sit at the table with us while we take the stress of making a tattoo design completely off your plate. We promise that you’ll feel the love, and see the difference creative collaboration makes. </p>
+          <p className="heart-text3">Our Customised tattoos have made a serious mark on people in India and abroad and changed lives for some. Our team approach lets you sit at the table with us while we take the stress of making a tattoo design completely off your plate. We promise that you'll feel the love, and see the difference creative collaboration makes. </p>
         </div>
 
         <div className="tattoo-artist-home">
@@ -358,8 +358,8 @@ const Home = () => {
   <div className="bg-white">
     <h1 className="home-talk">LET`S TALK TO US</h1>
 
-    <p className="home-talk1">Nervous or excited? We’ve got you!
-    Let’s talk and create the perfect tattoo for you.</p>
+    <p className="home-talk1">Nervous or excited? We've got you!
+    Let's talk and create the perfect tattoo for you.</p>
 
     <section id="offer-form" ref={formRef}>
   <div>
@@ -477,7 +477,7 @@ const Home = () => {
                    <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
                    </Link>
                  </div>
-          <div className="row"></div>
+          <div className="home-row"></div>
         </div>
     </div>
   );

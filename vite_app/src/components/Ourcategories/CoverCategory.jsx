@@ -28,8 +28,8 @@ const CoverUpTattoo = () => {
   return (
     <div className="cover-up-tattoo">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="sm-section">
+        <div className="sm-content">
           <h2>COVER-UP TATTOOS</h2>
           <p className="p2">Cover tattoos turn old memories into new masterpieces, blending creativity with fresh ink. They transform past regrets into art that tells a new story.</p>
           <p className="p2">Our experienced artists specialize in creating stunning cover-up designs that not only hide unwanted tattoos but also add a new layer of art to your skin. Whether you want to cover a small mistake or a large piece, we can help you achieve the perfect cover-up.</p>

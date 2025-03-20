@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import './stippling.css';
+import '../Home.css';
 import { Link } from "react-router-dom";
 
 const StipplingTattoo = () => {
@@ -79,8 +80,8 @@ const StipplingTattoo = () => {
   return (
     <div className="stippling-tattoo">
    
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="sm-section">
+        <div className="sm-content">
           <h2>STIPPLING TATTOOS</h2>
           <p className='p2'>
             "Stippling tattoos bring art to life with thousands of tiny dots, 
@@ -194,7 +195,7 @@ const StipplingTattoo = () => {
                  <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
                  </Link>
                </div>
-        <div className="row"></div>
+        <div className="home-row"></div>
       </div>
     </div>
   );
