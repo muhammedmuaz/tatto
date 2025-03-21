@@ -118,7 +118,7 @@ const Home = () => {
           fetch("https://tattoos-website-9-offer.onrender.com/offer"),
           fetch("https://tattoos-website-9-categories.onrender.com/homecategories"),
           fetch("https://tattoos-website-9-actors.onrender.com/actors"),
-          fetch("http://localhost:3006/reviews")
+          fetch("https://tattoos-reviews.onrender.com/reviews")
         ]);
   
         if (!imagesRes.ok || !categoriesRes.ok || !actorsRes.ok || !reviewsRes.ok) {
