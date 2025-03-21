@@ -228,7 +228,7 @@ const Home = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3006/reviews', {
+      const response = await fetch('https://tattoos-reviews.onrender.com/reviews', {
         method: 'POST',
         body: formData
       });
