@@ -17,6 +17,8 @@ const Home = () => {
           fetch("https://tattoos-website-9-offer.onrender.com/offer"),
           fetch("https://tattoos-website-9-categories.onrender.com/homecategories"),
           fetch("https://tattoos-website-9-actors.onrender.com/actors"),
+
+
         ]);
   
         if (!imagesRes.ok || !categoriesRes.ok || !actorsRes.ok) {
@@ -73,6 +75,7 @@ const Home = () => {
       setMessage("");
       setShowMessage(false);
   
+
       try {
         const response = await fetch(
           "https://tattoos-website-9-login.onrender.com/users",
@@ -100,6 +103,7 @@ const Home = () => {
           mobile: "",
           designPreference: "",
           appointmentDate: "",
+
         });
       } catch (error) {
         console.error("Form submission error:", error.message);
