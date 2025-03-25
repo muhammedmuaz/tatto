@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import OurArtist from "./components/OurArtist";
 import Eric from "./components/Ourartist/Eric";
-import Parth from "./components/Ourartist/Parth";
+import Parth from "./components/Ourartist/parth";
 import Poufa from "./components/Ourartist/Poufa";
 import SmallCategory from "./components/Ourcategories/SmallCategory";
 import StipplingCategory from "./components/Ourcategories/StipplingCategory";
