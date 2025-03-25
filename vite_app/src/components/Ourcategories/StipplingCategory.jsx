@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import './stippling.css';
+import '../Home.css';
 import { Link } from "react-router-dom";
 
 const StipplingTattoo = () => {
@@ -194,7 +195,7 @@ const StipplingTattoo = () => {
                  <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
                  </Link>
                </div>
-        <div className="row"></div>
+        <div className="home-row"></div>
       </div>
     </div>
   );

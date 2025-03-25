@@ -1,3 +1,199 @@
+/* Dark Mode and Theming Support */
+:root {
+  --base-font-size: 16px;
+  --primary-color: #90807d;
+  --primary-dark: #7a6c6a;
+  --primary-light: #f0e9e8;
+  --text-color: #333;
+  --light-text-color: #666;
+  --border-color: #eee;
+  --background-color: #fff;
+  --light-background: #f9f9f9;
+  --success-color: #4CAF50;
+  --danger-color: #F44336;
+  --warning-color: #FFC107;
+  --silver-color: #C0C0C0;
+  --gold-color: #FFD700;
+  --platinum-color: #E5E4E2;
+  --bronze-color: #CD7F32;
+}
+
+/* Apply base font size to body */
+body {
+  font-size: var(--base-font-size);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles for the entire app */
+.dark-mode {
+  --text-color: #f5f5f5;
+  --light-text-color: #d5d5d5;
+  --border-color: #444;
+  --background-color: #222;
+  --light-background: #333;
+}
+
+.dark-mode body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.dark-mode nav {
+  background-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode nav ul li a {
+  color: var(--text-color);
+}
+
+.dark-mode nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+.dark-mode .dropdown {
+  background-color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .dropdown li {
+  border-bottom: 1px solid #444;
+}
+
+.dark-mode .dropdown li:hover {
+  background-color: #444;
+}
+
+/* Dark mode VIP tier cards */
+.dark-mode .tier-card {
+  background-color: #333;
+  border-color: #444;
+}
+
+.dark-mode .tier-benefits li {
+  border-bottom-color: #444;
+}
+
+.dark-mode .tier-header.silver,
+.dark-mode .tier-header.gold,
+.dark-mode .tier-header.platinum {
+  color: #111;
+}
+
+.dark-mode .tier-header.silver {
+  background: linear-gradient(135deg, #A0A0A0, #C0C0C0);
+}
+
+.dark-mode .tier-header.gold {
+  background: linear-gradient(135deg, #D4AF37, #FFD700);
+}
+
+.dark-mode .tier-header.platinum {
+  background: linear-gradient(135deg, #C0C0BE, #E5E4E2);
+}
+
+.dark-mode .tier-benefits li::before {
+  color: var(--primary-light);
+}
+
+/* End of dark mode tier cards */
+
+.dark-mode .tier-badge.tier-bronze {
+  background-color: var(--bronze-color);
+  color: black;
+}
+
+.dark-mode .tier-badge.tier-silver {
+  background-color: var(--silver-color);
+  color: black;
+}
+
+.dark-mode .tier-badge.tier-gold {
+  background-color: var(--gold-color);
+  color: black;
+}
+
+.dark-mode .tier-badge.tier-platinum {
+  background-color: var(--platinum-color);
+  color: black;
+}
+
+.dark-mode .profile-dropdown,
+.dark-mode .enhanced-profile-dropdown {
+  background-color: #333;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .profile-details h3,
+.dark-mode .loyalty-header h4 {
+  color: var(--text-color);
+}
+
+.dark-mode .profile-details p,
+.dark-mode .tier-progress,
+.dark-mode .points-value {
+  color: var(--light-text-color);
+}
+
+.dark-mode .progress-bar {
+  background-color: #444;
+}
+
+.dark-mode .loyalty-section,
+.dark-mode .profile-header,
+.dark-mode .next-appointment {
+  border-bottom-color: #444;
+}
+
+.dark-mode .rewards-link,
+.dark-mode .profile-link,
+.dark-mode .settings-link {
+  background-color: #444;
+  color: var(--text-color);
+}
+
+.dark-mode .rewards-link:hover,
+.dark-mode .profile-link:hover,
+.dark-mode .settings-link:hover {
+  background-color: #555;
+}
+
+.dark-mode .appointment-brief {
+  background-color: #444;
+}
+
+.dark-mode .appointment-date {
+  color: var(--primary-light);
+}
+
+.dark-mode .appointment-info p {
+  color: var(--light-text-color);
+}
+
+.dark-mode .view-link {
+  color: var(--primary-light);
+}
+
+/* Compact View Styles */
+.compact-view body {
+  line-height: 1.3;
+}
+
+.compact-view nav {
+  padding: 0.7rem 2rem;
+  height: 4vh;
+}
+
+.compact-view nav ul {
+  gap: 2rem;
+}
+
+.compact-view nav ul li a {
+  font-size: 0.95rem;
+}
+
 body, ul, li, a {
   margin: 0;
   padding: 0;
@@ -30,7 +226,7 @@ nav ul {
   align-items: center;
   font-weight: 800;
   font-size: 1rem;
-  gap: 3.5rem;
+  gap: 3rem;
   padding-left: rem;
   margin-top: -8vh;
 }
@@ -92,6 +288,87 @@ nav ul li a.active {
   padding: 10px;
   cursor: pointer;
   border-bottom: 1px solid #ddd;
+}
+
+.profile-menu-container {
+  position: relative;
+  margin-left: 2rem;
+}
+
+.profile-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #90807d;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.profile-button:hover {
+  transform: scale(1.1);
+  background: #7a6c6a;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.login-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: white;
+  min-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.profile-info {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-info p {
+  margin: 0.25rem 0;
+  color: #333;
+}
+
+.profile-dropdown button,
+.profile-dropdown a {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-dropdown button:hover,
+.profile-dropdown a:hover {
+  background-color: #f5f5f5;
+  color: #90807d;
   text-align: left;
 }
 
@@ -191,5 +468,99 @@ nav ul li a.active {
 
   .dropdown li {
     border-bottom: none;
+  }
+}
+
+/* App Notifications */
+.app-notification {
+  position: fixed;
+  top: 7vh;
+  right: 20px;
+  z-index: 9999;
+  max-width: 350px;
+  min-width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transform: translateX(120%);
+  animation: slideIn 0.3s forwards, slideOut 0.3s 4.7s forwards;
+}
+
+.dark-mode .app-notification {
+  background-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideIn {
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  to { transform: translateX(120%); }
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+}
+
+.notification-icon {
+  font-size: 24px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-notification.tier-upgrade {
+  border-left: 5px solid var(--gold-color);
+}
+
+.app-notification.tier-upgrade .notification-icon {
+  color: var(--gold-color);
+}
+
+.notification-message {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.dark-mode .notification-message {
+  color: #f0f0f0;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: #999;
+  padding: 0 5px;
+  margin-left: 10px;
+}
+
+.notification-close:hover {
+  color: #666;
+}
+
+.dark-mode .notification-close {
+  color: #aaa;
+}
+
+.dark-mode .notification-close:hover {
+  color: #ccc;
+}
+
+@media (max-width: 576px) {
+  .app-notification {
+    left: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+    min-width: auto;
   }
 }
