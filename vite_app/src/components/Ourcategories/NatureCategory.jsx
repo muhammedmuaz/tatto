@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Heart } from 'lucide-react';
 import './nature.css';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 const NatureTattoo = () => {
   const [tattoos, setTattoos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,11 +27,11 @@ const NatureTattoo = () => {
       <section className="sm-section">
         <div className="sm-content">
           <h2>NATURE TATTOOS</h2>
-          <p className="p2">Nature tattoos capture the beauty of the earth, 
+          <p className="p2">Nature tattoos capture the beauty of the earth,
             from towering trees to flowing rivers. Each design connects the soul to the wild and free spirit of nature.</p>
 
-            <p className="p2">Our artists specialize in creating intricate designs that bring the essence of nature to your skin. From delicate 
-              flowers to majestic trees, we can help you find the perfect nature tattoo to express your connection with the natural world.</p>
+          <p className="p2">Our artists specialize in creating intricate designs that bring the essence of nature to your skin. From delicate
+            flowers to majestic trees, we can help you find the perfect nature tattoo to express your connection with the natural world.</p>
         </div>
       </section>
 
@@ -46,19 +46,19 @@ const NatureTattoo = () => {
               <div key={tattoo.id} className="tattoo-card">
                 <img src={tattoo.imageurl} alt={`Nature tattoo design ${tattoo.id}`} />
                 <div className="tattoo-overlay">
-                    
-                      <img className="stippling-hover" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Logo"  />
-                      <span className="text-stippling">POUFA</span>
-                  
-                  </div>
-          
+
+                  <img className="stippling-hover" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Logo" />
+                  <span className="text-stippling">POUFA</span>
+
+                </div>
+
               </div>
             ))}
           </div>
         )}
       </section>
 
-     
+
       <div className='home-footer'>
         <div>
           <img className='dreamers' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673259/dreamers_ryrags.png" alt="Dreamers" />
@@ -70,7 +70,7 @@ const NatureTattoo = () => {
             <li className="quick">QUICK LINKS</li>
             <li className="follow">FOLLOW US</li>
           </ul>
-          
+
           <div className="footer-3"></div>
           <div className="footer-4"></div>
           <div className="footer-5"></div>
@@ -109,22 +109,16 @@ const NatureTattoo = () => {
         </ul>
 
         <div className="circle-3">
-                 <Link to="https://github.com/kiranchaudhary18"  target="_blank">
-                 <img className="icon-3" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740680431/th_id_OIP_21_qktu4l.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-4">
-               <Link to="https://x.com/home?lang=en-in"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-5">
-               <Link to="https://www.instagram.com/chaudhary_kiran_022/?next=%2F"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
-                 </Link>
-               </div>
+          <Link to="https://www.linkedin.com/company/40770349" target="_blank">
+            <img className="icon-2" src="https://i.pinimg.com/originals/18/7e/51/187e511cdb50bf5614bc5dbc29eaeed8.jpg" alt="LinkedIn Logo" />
+          </Link>
+        </div>
+
+        <div className="circle-4">
+          <Link to="https://www.facebook.com/profile.php?id=61573172018439" target="_blank">
+            <img className="icon-2" src="https://cdn-icons-png.flaticon.com/256/20/20673.png" alt="Social Icon" />
+          </Link>
+        </div>
         <div className="row"></div>
       </div>
     </div>

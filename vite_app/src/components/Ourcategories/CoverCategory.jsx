@@ -117,16 +117,10 @@ const CoverUpTattoo = () => {
                </div>
        
                <div className="circle-4">
-               <Link to="https://x.com/home?lang=en-in"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-5">
-               <Link to="https://www.instagram.com/chaudhary_kiran_022/?next=%2F"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
-                 </Link>
-               </div>
+          <Link to="https://www.facebook.com/profile.php?id=61573172018439" target="_blank">
+            <img className="icon-2" src="https://cdn-icons-png.flaticon.com/256/20/20673.png" alt="Social Icon" />
+          </Link>
+        </div>
         <div className="row"></div>
       </div>
     </div>

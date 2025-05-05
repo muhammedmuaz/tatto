@@ -8,7 +8,7 @@ const ReligiousTattoo = () => {
   const [likedTattoos, setLikedTattoos] = useState({}); // Store liked tattoos
 
   // Fetch tattoos from API
-  useEffect(() => { 
+  useEffect(() => {
     window.scrollTo(0, 0);
     const fetchTattoos = async () => {
       try {
@@ -80,10 +80,10 @@ const ReligiousTattoo = () => {
       <section className="sm-section">
         <div className="sm-content">
           <h2>RELIGIOUS TATTOOS</h2>
-          <p className="p2">"Religious tattoos symbolize faith and devotion, marking a spiritual 
+          <p className="p2">"Religious tattoos symbolize faith and devotion, marking a spiritual
             journey on the skin. Each design holds deep meaning, reflecting belief and inner strength."</p>
           <p className="p2">Our artists specialize in creating sacred and symbolic tattoos that reflect your beliefs. From crosses
-             and rosaries to mandalas and om symbols, we can help you find the perfect religious tattoo to honor your spirituality.</p>
+            and rosaries to mandalas and om symbols, we can help you find the perfect religious tattoo to honor your spirituality.</p>
         </div>
       </section>
 
@@ -100,11 +100,11 @@ const ReligiousTattoo = () => {
                 <div key={tattoo.id} className="tattoo-card">
                   <img src={tattoo.imageurl} alt={`Tattoo ${tattoo.id}`} />
                   <div className="tattoo-overlay">
-                    
-                    <img className="stippling-hover" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Logo"  />
+
+                    <img className="stippling-hover" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Logo" />
                     <span className="text-stippling">POUFA</span>
-                
-                </div>
+
+                  </div>
                 </div>
               ))
             ) : (
@@ -113,7 +113,7 @@ const ReligiousTattoo = () => {
           </div>
         )}
       </section>
-       
+
       <div className='small-footer'>
         <div>
           <img className='dreamers' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673259/dreamers_ryrags.png" alt="Dreamers" />
@@ -125,7 +125,7 @@ const ReligiousTattoo = () => {
             <li className="quick">QUICK LINKS</li>
             <li className="follow">FOLLOW US</li>
           </ul>
-          
+
           <div className="footer-3"></div>
           <div className="footer-4"></div>
           <div className="footer-5"></div>
@@ -164,22 +164,16 @@ const ReligiousTattoo = () => {
         </ul>
 
         <div className="circle-3">
-                 <Link to="https://github.com/kiranchaudhary18"  target="_blank">
-                 <img className="icon-3" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740680431/th_id_OIP_21_qktu4l.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-4">
-               <Link to="https://x.com/home?lang=en-in"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-5">
-               <Link to="https://www.instagram.com/chaudhary_kiran_022/?next=%2F"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
-                 </Link>
-               </div>
+          <Link to="https://www.linkedin.com/company/40770349" target="_blank">
+            <img className="icon-2" src="https://i.pinimg.com/originals/18/7e/51/187e511cdb50bf5614bc5dbc29eaeed8.jpg" alt="LinkedIn Logo" />
+          </Link>
+        </div>
+
+        <div className="circle-4">
+          <Link to="https://www.facebook.com/profile.php?id=61573172018439" target="_blank">
+            <img className="icon-2" src="https://cdn-icons-png.flaticon.com/256/20/20673.png" alt="Social Icon" />
+          </Link>
+        </div>
         <div className="row"></div>
       </div>
     </div>

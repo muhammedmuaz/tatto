@@ -226,7 +226,7 @@ function App() {
           <div className="logo-container">
             <img
               className="logo"
-              src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738302308/logo_lgkl6k.png"
+              src="https://res.cloudinary.com/dt954whwa/image/upload/v1746451610/0a12eba4-dfa6-4270-9d78-c3d2eb0c2d0f-removebg-preview_oalmub.png"
               alt="Logo"
             />
           </div>

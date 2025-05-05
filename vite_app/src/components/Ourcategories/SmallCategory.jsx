@@ -8,7 +8,7 @@ const TattooStudio = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  
+
     fetch(' https://tattoos-website-9-small1.onrender.com/small')
       .then((response) => {
         if (!response.ok) {
@@ -17,7 +17,7 @@ const TattooStudio = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched Data:", data); 
+        console.log("Fetched Data:", data);
         setTattoos(data);
         setLoading(false);
       })
@@ -26,7 +26,7 @@ const TattooStudio = () => {
         setLoading(false);
       });
   }, []);
-  
+
 
   return (
     <div className="tattoo-studio">
@@ -44,41 +44,41 @@ const TattooStudio = () => {
         {loading && <p>Loading tattoos...</p>}
         {error && <p>Error: {error}</p>}
         <div className="tattoo-grid">
-  {tattoos.length > 0 ? (
-    tattoos.map((tattoo, index) => (
-      <div key={tattoo.id || index} className="tattoo-card">
-        <div className="tattoo-image-container">
-          <img src={tattoo.imageUrl} alt={`Tattoo design ${index + 1}`} className="tattoo-image" />
-          
-          {/* Apply hover effect for the first three images */}
-          {index < 9 && (
-            <div className="hover-overlay">
-              <img src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Artist Logo" className="artist-logo" />
-              <p className="artist-name">PARTH SAVANI</p>
-            </div>
-          )}
+          {tattoos.length > 0 ? (
+            tattoos.map((tattoo, index) => (
+              <div key={tattoo.id || index} className="tattoo-card">
+                <div className="tattoo-image-container">
+                  <img src={tattoo.imageUrl} alt={`Tattoo design ${index + 1}`} className="tattoo-image" />
 
-          {/* Apply hover effect for the 4th, 7th, and 8th images */}
-          {[3, 6, 7].includes(index) && (
-            <div className="hover-overlay1">
-              <img src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Artist Logo" className="artist-logo" />
-              <p className="artist-name1">Eric D'suza</p>
-            </div>
+                  {/* Apply hover effect for the first three images */}
+                  {index < 9 && (
+                    <div className="hover-overlay">
+                      <img src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Artist Logo" className="artist-logo" />
+                      <p className="artist-name">PARTH SAVANI</p>
+                    </div>
+                  )}
+
+                  {/* Apply hover effect for the 4th, 7th, and 8th images */}
+                  {[3, 6, 7].includes(index) && (
+                    <div className="hover-overlay1">
+                      <img src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740117582/logo_white_text_no_bg_change_fyg7cz.png" alt="Artist Logo" className="artist-logo" />
+                      <p className="artist-name1">Eric D'suza</p>
+                    </div>
+                  )}
+                </div>
+                {tattoo.name && <p className="tattoo-name">{tattoo.name}</p>}
+              </div>
+            ))
+          ) : (
+            !loading && <p>No tattoos found.</p>
           )}
         </div>
-        {tattoo.name && <p className="tattoo-name">{tattoo.name}</p>}
-      </div>
-    ))
-    ) : (
-    !loading && <p>No tattoos found.</p>
-   )}
-   </div>
 
 
 
       </section>
 
-     
+
       <div className='small-footer'>
         <div>
           <img className='dreamers' src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738673259/dreamers_ryrags.png" alt="Dreamers" />
@@ -90,7 +90,7 @@ const TattooStudio = () => {
             <li className="quick">QUICK LINKS</li>
             <li className="follow">FOLLOW US</li>
           </ul>
-          
+
           <div className="footer-3"></div>
           <div className="footer-4"></div>
           <div className="footer-5"></div>
@@ -129,22 +129,16 @@ const TattooStudio = () => {
         </ul>
 
         <div className="circle-3">
-                 <Link to="https://github.com/kiranchaudhary18"  target="_blank">
-                 <img className="icon-3" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740680431/th_id_OIP_21_qktu4l.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-4">
-               <Link to="https://x.com/home?lang=en-in"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-5">
-               <Link to="https://www.instagram.com/chaudhary_kiran_022/?next=%2F"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
-                 </Link>
-               </div>
+          <Link to="https://www.linkedin.com/company/40770349" target="_blank">
+            <img className="icon-2" src="https://i.pinimg.com/originals/18/7e/51/187e511cdb50bf5614bc5dbc29eaeed8.jpg" alt="LinkedIn Logo" />
+          </Link>
+        </div>
+
+        <div className="circle-4">
+          <Link to="https://www.facebook.com/profile.php?id=61573172018439" target="_blank">
+            <img className="icon-2" src="https://cdn-icons-png.flaticon.com/256/20/20673.png" alt="Social Icon" />
+          </Link>
+        </div>
         <div className="row"></div>
       </div>
     </div>

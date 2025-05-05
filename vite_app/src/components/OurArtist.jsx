@@ -102,22 +102,17 @@ const OurArtist = () => {
         </ul>
 
         <div className="circle-3">
-                 <Link to="https://github.com/kiranchaudhary18"  target="_blank">
-                 <img className="icon-3" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740680431/th_id_OIP_21_qktu4l.png" alt="Social Icon" />
-                 </Link>
-               </div>
+          <Link to="https://www.linkedin.com/company/40770349" target="_blank">
+            <img className="icon-2" src="https://i.pinimg.com/originals/18/7e/51/187e511cdb50bf5614bc5dbc29eaeed8.jpg" alt="LinkedIn Logo" />
+          </Link>
+        </div>
        
-               <div className="circle-4">
-               <Link to="https://x.com/home?lang=en-in"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png" alt="Social Icon" />
-                 </Link>
-               </div>
+        <div className="circle-4">
+          <Link to="https://www.facebook.com/profile.php?id=61573172018439" target="_blank">
+            <img className="icon-2" src="https://cdn-icons-png.flaticon.com/256/20/20673.png" alt="Social Icon" />
+          </Link>
+        </div>
        
-               <div className="circle-5">
-               <Link to="https://www.instagram.com/chaudhary_kiran_022/?next=%2F"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
-                 </Link>
-               </div>
         <div className="home-row"></div>
       </div>
     </div>

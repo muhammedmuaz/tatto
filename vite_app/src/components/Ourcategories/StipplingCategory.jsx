@@ -29,37 +29,37 @@ const StipplingTattoo = () => {
     fetchTattoos();
   }, []);
 
- 
+
   const handleLike = async (tattooId) => {
     try {
-    
+
       const tattoo = tattoos.find((t) => t._id === tattooId);
       if (!tattoo) return;
 
-      
+
       const isLiked = tattoo.liked || false;
       const updatedLikes = isLiked ? tattoo.likes - 1 : tattoo.likes + 1;
 
-      
+
       setTattoos((prevTattoos) =>
         prevTattoos.map((t) =>
           t._id === tattooId ? { ...t, likes: updatedLikes, liked: !isLiked } : t
         )
       );
 
-      
+
       const response = await fetch(`https://tattoos-website-9-stippling.onrender.com/stippling/${tattooId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ likes: updatedLikes, liked: !isLiked }), 
+        body: JSON.stringify({ likes: updatedLikes, liked: !isLiked }),
       });
 
       if (!response.ok) throw new Error('Failed to update like status');
 
-      
+
       const updatedTattoo = await response.json();
 
-      
+
       setTattoos((prevTattoos) =>
         prevTattoos.map((t) =>
           t._id === updatedTattoo._id ? updatedTattoo : t
@@ -68,7 +68,7 @@ const StipplingTattoo = () => {
     } catch (error) {
       console.error('Error updating like status:', error);
 
-      
+
       setTattoos((prevTattoos) =>
         prevTattoos.map((t) =>
           t._id === tattooId ? { ...t, likes: tattoo.likes, liked: tattoo.liked } : t
@@ -76,30 +76,30 @@ const StipplingTattoo = () => {
       );
     }
   };
-  
+
   return (
     <div className="stippling-tattoo">
-   
+
       <section className="sm-section">
         <div className="sm-content">
           <h2>STIPPLING TATTOOS</h2>
           <p className='p2'>
-            "Stippling tattoos bring art to life with thousands of tiny dots, 
-            creating depth and detail like a masterpiece on skin. Each dot forms a story, 
+            "Stippling tattoos bring art to life with thousands of tiny dots,
+            creating depth and detail like a masterpiece on skin. Each dot forms a story,
             blending shadows and light into a timeless design."
           </p>
           <p className='p2'>
-            Our skilled artists specialize in creating intricate and detailed stippling 
-            designs that bring your vision to life. From geometric patterns to realistic portraits, 
+            Our skilled artists specialize in creating intricate and detailed stippling
+            designs that bring your vision to life. From geometric patterns to realistic portraits,
             we can help you achieve the perfect stippling tattoo.
           </p>
         </div>
       </section>
 
-   
+
       <section className="gallery-section">
         <h2>OUR STIPPLING TATTOOS</h2>
-        
+
         {loading ? (
           <p>Loading tattoos...</p>
         ) : (
@@ -113,10 +113,10 @@ const StipplingTattoo = () => {
                     <span className="text-stippling">POUFA</span>
                   </div>
                   <div className="like-button-container">
-                  <button className="like-button" onClick={() => handleLike(tattoo._id)}>
-  <Heart size={24} className={tattoo.liked ? 'liked' : ''} fill={tattoo.liked ? 'red' : 'none'} />
-  <span>{tattoo.likes ?? 0}</span>
-</button>
+                    <button className="like-button" onClick={() => handleLike(tattoo._id)}>
+                      <Heart size={24} className={tattoo.liked ? 'liked' : ''} fill={tattoo.liked ? 'red' : 'none'} />
+                      <span>{tattoo.likes ?? 0}</span>
+                    </button>
 
                   </div>
                 </div>
@@ -140,7 +140,7 @@ const StipplingTattoo = () => {
             <li className="quick">QUICK LINKS</li>
             <li className="follow">FOLLOW US</li>
           </ul>
-          
+
           <div className="footer-3"></div>
           <div className="footer-4"></div>
           <div className="footer-5"></div>
@@ -179,22 +179,16 @@ const StipplingTattoo = () => {
         </ul>
 
         <div className="circle-3">
-                 <Link to="https://github.com/kiranchaudhary18"  target="_blank">
-                 <img className="icon-3" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1740680431/th_id_OIP_21_qktu4l.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-4">
-               <Link to="https://x.com/home?lang=en-in"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738668/th_id_OIP_10_dsd5bt.png" alt="Social Icon" />
-                 </Link>
-               </div>
-       
-               <div className="circle-5">
-               <Link to="https://www.instagram.com/chaudhary_kiran_022/?next=%2F"  target="_blank">
-                 <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738738751/th_id_OIP_11_rzyiqj.png" alt="Social Icon" />
-                 </Link>
-               </div>
+          <Link to="https://www.linkedin.com/company/40770349" target="_blank">
+            <img className="icon-2" src="https://i.pinimg.com/originals/18/7e/51/187e511cdb50bf5614bc5dbc29eaeed8.jpg" alt="LinkedIn Logo" />
+          </Link>
+        </div>
+
+        <div className="circle-4">
+          <Link to="https://www.facebook.com/profile.php?id=61573172018439" target="_blank">
+            <img className="icon-2" src="https://cdn-icons-png.flaticon.com/256/20/20673.png" alt="Social Icon" />
+          </Link>
+        </div>
         <div className="home-row"></div>
       </div>
     </div>
