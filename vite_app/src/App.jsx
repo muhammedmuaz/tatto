@@ -235,9 +235,6 @@ function App() {
               <li className="home">
                 <Link to="/">HOME</Link>
               </li>
-              <li>
-                <Link to="/about">ABOUT</Link>
-              </li>
               <li
                 className="categories-menu"
                 onMouseEnter={() => setArtistDropdown(true)}
@@ -292,6 +289,9 @@ function App() {
               </li>
               <li>
                 <Link to="/blog">AI TATTOO</Link>
+              </li>
+<li>
+                <Link to="/signup">Sign Up</Link>
               </li>
               <li className="profile-menu-container">
                 <div 

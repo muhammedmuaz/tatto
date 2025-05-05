@@ -435,17 +435,17 @@ const Home = () => {
             <div className="circle">
               <img className="icon-1" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734578/location-icon-vector_qrxo2q.png" alt="Location Icon" />
             </div>
-            <p className="p1">A Wing 101, 1st Floor, Samadhan Tower by Asshna Developer, Swami Vivekananda Rd, opposite IndusInd Bank, Maharashtra Housing and Area Development Authority Colony, Best Nagar, Goregaon West, Mumbai, Maharashtra 400104</p>
+            <p className="p1">ALorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
   
             <div className="circle-1">
               <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734738/th_id_OIP_7_sziayt.png" alt="Email Icon" />
             </div>
-            <p className="p2">work@tattoodreamers.com</p>
+            <p className="p2">work@test.com</p>
   
             <div className="circle-2">
               <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734988/th_id_OIP_8_mdh0ga.png" alt="Phone Icon" />
             </div>
-            <p className="p3">+91 9106003382</p>
+            <p className="p3">+1 (201) 22332</p>
           </div>
   
           <ul className="links">

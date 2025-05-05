@@ -75,7 +75,7 @@ const Contact = () => {
 
     try {
       // Fetch existing users to check for duplicate email
-      const response = await fetch(" http://localhost:3000/users");
+      const response = await fetch(" http://localhost:4567/users");
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${await response.text()}`);
       }
