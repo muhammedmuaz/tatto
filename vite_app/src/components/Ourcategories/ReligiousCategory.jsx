@@ -12,7 +12,7 @@ const ReligiousTattoo = () => {
     window.scrollTo(0, 0);
     const fetchTattoos = async () => {
       try {
-        const response = await fetch(" http://localhost:3011/stippling");
+        const response = await fetch(" http://localhost:4567/stippling");
         if (!response.ok) {
           throw new Error("Failed to fetch tattoos");
         }
@@ -38,7 +38,7 @@ const ReligiousTattoo = () => {
       const isLiked = likedTattoos[tattooId] || false;
 
       // Send request to API
-      const response = await fetch(`http://localhost:3011/stippling/like/${tattooId}`, {
+      const response = await fetch(`http://localhost:4567/stippling/like/${tattooId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

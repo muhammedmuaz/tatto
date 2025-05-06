@@ -72,17 +72,17 @@ const OurArtist = () => {
           <div className="circle">
             <img className="icon-1" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734578/location-icon-vector_qrxo2q.png" alt="Location Icon" />
           </div>
-          <p className="p1">A Wing 101, 1st Floor, Samadhan Tower by Asshna Developer, Swami Vivekananda Rd, opposite IndusInd Bank, Maharashtra Housing and Area Development Authority Colony, Best Nagar, Goregaon West, Mumbai, Maharashtra 400104</p>
+          <p className="p1">124 City Road, London, EC1V 2NX <br></br> <br></br> <br></br> <br></br><br></br><br></br></p>
 
           <div className="circle-1">
             <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734738/th_id_OIP_7_sziayt.png" alt="Email Icon" />
           </div>
-          <p className="p2">work@tattoodreamers.com</p>
+          <p className="p2">info@tattooart.io</p>
 
           <div className="circle-2">
             <img className="icon-2" src="https://res.cloudinary.com/dnbayngfx/image/upload/v1738734988/th_id_OIP_8_mdh0ga.png" alt="Phone Icon" />
           </div>
-          <p className="p3">+91 9106003382</p>
+          <p className="p3">+44 7399 502095</p>
         </div>
 
         <ul className="links">

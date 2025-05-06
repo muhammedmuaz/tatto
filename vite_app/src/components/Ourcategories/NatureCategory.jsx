@@ -9,7 +9,7 @@ const NatureTattoo = () => {
   useEffect(() => {
 
     window.scrollTo(0, 0);
-    fetch('http://localhost:3011/stippling')
+    fetch('http://localhost:4567/stippling')
       .then((response) => response.json())
       .then((data) => {
         setTattoos(data);

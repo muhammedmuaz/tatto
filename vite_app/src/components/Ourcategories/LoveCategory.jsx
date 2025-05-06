@@ -12,7 +12,7 @@ const LoveTattoo = () => {
     window.scrollTo(0, 0);
     const fetchTattoos = async () => {
       try {
-        const response = await fetch("http://localhost:3011/stippling"); // Replace with the actual API URL
+        const response = await fetch("http://localhost:4567/stippling"); // Replace with the actual API URL
         const data = await response.json();
         setTattoos(data);
         setLoading(false);
